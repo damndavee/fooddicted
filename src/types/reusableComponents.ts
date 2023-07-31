@@ -2,7 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 export type FormControlInputComponentType = {
     type: "text" | "password";
-    isSignIn: boolean;
     isValid: boolean;
     id: string;
     errorMessage: string;
