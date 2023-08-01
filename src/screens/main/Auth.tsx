@@ -1,11 +1,11 @@
 import { KeyboardAvoidingView, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { AuthScreenProps } from '../hoc/withMain';
+import { AuthScreenProps } from '../../hoc/withMain';
 import { Button } from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { AuthScreenIcon } from '../components/common/Icons'; 
-import { COLORS } from '../utils/tokens';
-import FormControlInputComponent from '../components/common/FormControlInput';
+import { AuthScreenIcon } from '../../components/common/Icons'; 
+import { COLORS } from '../../utils/tokens';
+import FormControlInputComponent from '../../components/common/FormControlInput';
 
 const AuthScreen = (props: AuthScreenProps) => {
   const { currentRoute, texts } = props;

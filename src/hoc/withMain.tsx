@@ -5,6 +5,7 @@ import { StackNavigationProp } from "@react-navigation/stack"
 import { NavigationScreens } from "../navigation/screens";
 import { RootStackParamList } from "../navigation/stack/type";
 import { FORM_TYPE_OBJECT } from "../utils/consts";
+import { versions } from "../utils/versions.json";
 
 type FormType = "signin" | "signup";
 
@@ -18,7 +19,11 @@ export type AuthScreenProps = {
     texts: any;
 }
 
-export type WithMainScreenProps = WelcomeScreenProps | AuthScreenProps | (WelcomeScreenProps & AuthScreenProps);
+export type ReadAboutScreenProps = {
+    versions: any[]
+}
+
+export type WithMainScreenProps = ReadAboutScreenProps | WelcomeScreenProps | AuthScreenProps | (WelcomeScreenProps & AuthScreenProps & ReadAboutScreenProps);
 
 const withMainScreen = <T extends WithMainScreenProps>(DumbComponent: ComponentType<T>) => () => {
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
@@ -26,16 +31,15 @@ const withMainScreen = <T extends WithMainScreenProps>(DumbComponent: ComponentT
 
     const CURRENT_ROUTE = route?.params?.id || "signin";
 
-    
     const handleGoToAuth = (id: string) => navigation.navigate(NavigationScreens.Auth, { id });
-    // const handleGoToReadAbout = () => navigation.navigate(NavigationScreens.ReadAbout);
-    const handleGoToReadAbout = () => navigation.navigate(NavigationScreens.Dashboard);
+    const handleGoToReadAbout = () => navigation.navigate(NavigationScreens.ReadAbout);
 
     const properties = {
         onGoToAuth: handleGoToAuth,
         onGoToReadAbout: handleGoToReadAbout,
         currentRoute: CURRENT_ROUTE,
-        texts: FORM_TYPE_OBJECT[CURRENT_ROUTE as FormType]
+        texts: FORM_TYPE_OBJECT[CURRENT_ROUTE as FormType],
+        versions: versions
     } as T;
 
     return (

@@ -4,9 +4,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { LinearGradient } from "expo-linear-gradient";
 
-import { MainScreenIcon } from '../components/common/Icons';
-import { COLORS } from '../utils/tokens';
-import { WelcomeScreenProps } from '../hoc/withMain';
+import { MainScreenIcon } from '../../components/common/Icons';
+import { COLORS } from '../../utils/tokens';
+import { WelcomeScreenProps } from '../../hoc/withMain';
 
 const WelcomeScreen = (props: WelcomeScreenProps) => {
   const { onGoToAuth, onGoToReadAbout } = props;
