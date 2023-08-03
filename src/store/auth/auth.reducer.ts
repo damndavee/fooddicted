@@ -1,4 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+import { signUpUserThunk } from "./auth.thunk";
 import { AuthUser, AuthenticatedUser, ValidationResults } from "./auth.type";
 
 type SliceState = {
@@ -22,7 +24,17 @@ const slice = createSlice<SliceState, Reducers>({
         validators: {}
     },
     reducers: {},
-    extraReducers: builder => {},
+    extraReducers: builder => {
+        builder.addCase(signUpUserThunk.pending, state => {
+            state.isLoading = true;
+        });
+        builder.addCase(signUpUserThunk.fulfilled, (state) => {
+            state.isLoading = false;
+        });
+        builder.addCase(signUpUserThunk.rejected, state => {
+            state.isLoading = false;
+        });
+    },
 });
 
 export const {} = slice.actions;
