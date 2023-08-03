@@ -1,5 +1,5 @@
 import { call, all, put } from "redux-saga/effects";
-import { createUserWithAdditionalDataThunk, signUpUserThunk } from "./auth/auth.thunk";
+import { createUserWithAdditionalDataThunk, signInUserThunk } from "./auth/auth.thunk";
 
 const user = {
     email: "sampleUser1@user.com",
@@ -13,6 +13,11 @@ function* initialSaga() {
     yield console.log("INITIALIZED!");
 }
 
+function* testingSignUp() {
+    yield put(createUserWithAdditionalDataThunk({...user}) as any);
+    yield put(signInUserThunk({email: user.email, password: user.password}) as any);
+}
+
 export function* rootSaga() {
-    yield all([call(initialSaga)]);
+    yield all([call(initialSaga), call(testingSignUp)]);
 }
