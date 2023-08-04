@@ -1,0 +1,55 @@
+import { StyleSheet, View, Text } from 'react-native';
+import { Menu, HamburgerIcon, Button } from 'native-base';
+import { COLORS } from '../../utils/tokens';
+import IconButton from '../../components/Buttons/IconButton';
+
+const HeaderMenu = () => {
+  return (
+    <View style={styles.hamburgerContainer}>
+        <Menu p={0} w="200" shouldOverlapWithTrigger={false} placement='bottom right' trigger={triggerProps => {
+            return (
+                <Button style={styles.button} variant="ghost" {...triggerProps}>
+                    <HamburgerIcon color='#fff' size={7} />
+                </Button>
+            )
+        }}>
+            <Menu.Item onPress={() => {}} style={styles.borderBottom} >
+                <IconButton color={COLORS.tertiary} name='add-circle-outline' size={24} />
+                <Text style={styles.text}>Add Recipe</Text>
+            </Menu.Item>
+            <Menu.Item onPress={() => {}} style={styles.borderBottom} >
+                <IconButton color={COLORS.tertiary} name='search-circle-outline' size={24} />
+                <Text style={styles.text}>Search Recipe</Text>
+            </Menu.Item>
+            <Menu.Item onPress={() => {}} style={styles.borderBottom} >
+                <IconButton color={COLORS.tertiary} name='settings-outline' size={24} />
+                <Text style={styles.text}>Settings</Text>
+            </Menu.Item>
+            <Menu.Item onPress={() => {}}>
+                <IconButton color={COLORS.tertiary} name='exit-outline' size={24} />
+                <Text style={styles.text}>Logout</Text>
+            </Menu.Item>
+        </Menu>
+    </View>
+  )
+}
+
+export default HeaderMenu
+
+const styles = StyleSheet.create({
+    hamburgerContainer: {
+        flex: 1,
+        alignItems: 'flex-end',
+        justifyContent: 'center'
+    },
+    button: {
+        backgroundColor: COLORS.tertiary,
+    },
+    borderBottom: {
+        borderBottomColor: COLORS.tertiary_light, 
+        borderBottomWidth: 0.3
+    },
+    text: {
+        color: COLORS.tertiary
+    }
+})
