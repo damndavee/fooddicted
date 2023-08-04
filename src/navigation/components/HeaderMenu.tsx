@@ -1,37 +1,42 @@
 import { StyleSheet, View, Text } from 'react-native';
 import { Menu, HamburgerIcon, Button } from 'native-base';
+
 import { COLORS } from '../../utils/tokens';
 import IconButton from '../../components/Buttons/IconButton';
+import useMenu from '../../hooks/useMenu';
 
 const HeaderMenu = () => {
-  return (
-    <View style={styles.hamburgerContainer}>
-        <Menu p={0} w="200" shouldOverlapWithTrigger={false} placement='bottom right' trigger={triggerProps => {
-            return (
-                <Button style={styles.button} variant="ghost" {...triggerProps}>
-                    <HamburgerIcon color='#fff' size={7} />
-                </Button>
-            )
-        }}>
-            <Menu.Item onPress={() => {}} style={styles.borderBottom} >
-                <IconButton color={COLORS.tertiary} name='add-circle-outline' size={24} />
-                <Text style={styles.text}>Add Recipe</Text>
-            </Menu.Item>
-            <Menu.Item onPress={() => {}} style={styles.borderBottom} >
-                <IconButton color={COLORS.tertiary} name='search-circle-outline' size={24} />
-                <Text style={styles.text}>Search Recipe</Text>
-            </Menu.Item>
-            <Menu.Item onPress={() => {}} style={styles.borderBottom} >
-                <IconButton color={COLORS.tertiary} name='settings-outline' size={24} />
-                <Text style={styles.text}>Settings</Text>
-            </Menu.Item>
-            <Menu.Item onPress={() => {}}>
-                <IconButton color={COLORS.tertiary} name='exit-outline' size={24} />
-                <Text style={styles.text}>Logout</Text>
-            </Menu.Item>
-        </Menu>
-    </View>
-  )
+
+    const { handleGoToAddRecipeScreen, handleGoToSearchRecipesScreen, handleGoToSettingsScreen, handleLogout } = useMenu();
+
+    return (
+        <View style={styles.hamburgerContainer}>
+            <Menu p={0} w="200" shouldOverlapWithTrigger={false} placement='bottom right' trigger={triggerProps => {
+                return (
+                    <Button style={styles.button} variant="ghost" {...triggerProps}>
+                        <HamburgerIcon color='#fff' size={7} />
+                    </Button>
+                )
+            }}>
+                <Menu.Item onPress={handleGoToAddRecipeScreen} style={styles.borderBottom} >
+                    <IconButton color={COLORS.tertiary} name='add-circle-outline' size={24} />
+                    <Text style={styles.text}>Add Recipe</Text>
+                </Menu.Item>
+                <Menu.Item onPress={handleGoToSearchRecipesScreen} style={styles.borderBottom} >
+                    <IconButton color={COLORS.tertiary} name='search-circle-outline' size={24} />
+                    <Text style={styles.text}>Search Recipe</Text>
+                </Menu.Item>
+                <Menu.Item onPress={handleGoToSettingsScreen} style={styles.borderBottom} >
+                    <IconButton color={COLORS.tertiary} name='settings-outline' size={24} />
+                    <Text style={styles.text}>Settings</Text>
+                </Menu.Item>
+                <Menu.Item onPress={handleLogout}>
+                    <IconButton color={COLORS.tertiary} name='exit-outline' size={24} />
+                    <Text style={styles.text}>Logout</Text>
+                </Menu.Item>
+            </Menu>
+        </View>
+    )
 }
 
 export default HeaderMenu
