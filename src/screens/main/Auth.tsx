@@ -6,9 +6,15 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { AuthScreenIcon } from '../../components/common/Icons'; 
 import { COLORS } from '../../utils/tokens';
 import FormControlInputComponent from '../../components/common/FormControlInput';
+import useForm from '../../hooks/useForm';
+import { FormType } from '../../store/auth/auth.type';
 
 const AuthScreen = (props: AuthScreenProps) => {
   const { currentRoute, texts } = props;
+
+  console.log("CURRENT ROUTE: ", currentRoute);
+
+  const {handleChange, handleSubmit, userData, getFieldValidation } = useForm(currentRoute === 'signup');
 
   return (
     <KeyboardAvoidingView behavior='height' style={styles.rootContainer} >
@@ -17,10 +23,10 @@ const AuthScreen = (props: AuthScreenProps) => {
           <View style={styles.form}>
             {currentRoute === 'signup' && (
               <FormControlInputComponent 
-                errorMessage='This is error message'
-                id='nick'
-                isValid
-                onChange={() => console.log("TYPING!!")}
+                id='nickname'
+                errorMessage={getFieldValidation('nickname')?.errors[0]}
+                isValid={getFieldValidation("nickname")?.isValid} 
+                onChange={handleChange}
                 placeholder='Enter nickname...'
                 type='text'
                 variant='outline'
@@ -28,38 +34,38 @@ const AuthScreen = (props: AuthScreenProps) => {
               />
             )}
             <FormControlInputComponent 
-              errorMessage='This is error message'
               id='email'
-              isValid
-              onChange={() => console.log("TYPING!!")}
+              errorMessage={getFieldValidation('email')?.errors[0]}
+              isValid={getFieldValidation("email")?.isValid} 
+              onChange={handleChange}
               placeholder='Enter email address...'
               type='text'
               variant='outline'
               icon='at-outline'
             />
             <FormControlInputComponent 
-              errorMessage='This is error message'
               id='password'
-              isValid
-              onChange={() => console.log("TYPING!!")}
+              errorMessage={getFieldValidation('password')?.errors[0]}
+              isValid={getFieldValidation("password")?.isValid} 
+              onChange={handleChange}
               placeholder='Enter password...'
-              type='text'
+              type='password'
               variant='outline'
               icon='lock-closed-outline'
             />
             {currentRoute === 'signup' && (
               <FormControlInputComponent 
-                errorMessage='This is error message'
                 id='confirmPassword'
-                isValid
-                onChange={() => console.log("TYPING!!")}
+                errorMessage={getFieldValidation("confirmPassword")?.errors[0]}
+                isValid={getFieldValidation("confirmPassword")?.isValid} 
+                onChange={handleChange}
                 placeholder='Confirm password...'
-                type='text'
+                type='password'
                 variant='outline'
                 icon='lock-closed-outline'
               />
             )}
-            <Button _text={{color: 'lightText'}} paddingTop={3} paddingBottom={3} style={styles.button} variant="outline">{texts.btnText}</Button>
+            <Button android_ripple={{color: COLORS.primary}} onPress={handleSubmit} _text={{color: 'lightText'}} paddingTop={3} paddingBottom={3} style={styles.button} variant="outline">{texts.btnText}</Button>
           </View>
           <Button _text={{color: 'lightText'}} variant="link">{texts.link}</Button>
         </View>

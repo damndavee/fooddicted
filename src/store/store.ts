@@ -10,13 +10,13 @@ import { rootReducer } from "./root.reducer";
 import { rootSaga } from "./root.saga";
 
 const sagaMiddleware = createSagaMiddleware();
-const moddlewares = [logger, sagaMiddleware, thunk];
+const middlewares = [logger, sagaMiddleware, thunk];
 
 export const store = configureStore({
     reducer: rootReducer,
-    middleware: moddlewares,
+    middleware: middlewares,
 });
-
+ 
 export const persistor = persistStore(store);
 // persistor.purge();
 
