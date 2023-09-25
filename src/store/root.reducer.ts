@@ -3,6 +3,7 @@ import { persistReducer } from "redux-persist";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import authReducer from "./auth/auth.reducer";
+import navigationReducer from "./navigation/navigation.reducer";
 
 const authPersistConfig = {
     key: 'auth',
@@ -12,4 +13,5 @@ const authPersistConfig = {
 
 export const rootReducer = combineReducers({
     auth: persistReducer(authPersistConfig, authReducer),
+    navigation: navigationReducer,
 });

@@ -6,8 +6,8 @@ import { authFormValidation, isEmpty, validateEmail, validateExistance, validate
 import { ValidationResults, Validators } from "./auth.type";
 import { setValidators } from "./auth.reducer";
 import { createUserWithAdditionalDataThunk, getAllUsersThunk, signInUserThunk, signUpUserThunk } from "./auth.thunk";
-import useEnhancedNavigation from "../../hooks/useEnhancedNavigation";
 import { NavigationScreens } from "../../navigation/screens";
+import { popAndReplaceScreenAction } from "../navigation/navigation.action";
 
 export function* authenticateUser({payload}: any): any {
     const { userData, isSignUpForm } = payload;
@@ -52,11 +52,8 @@ export function* authenticateUser({payload}: any): any {
 }
 
 function* signInUser(user: any): any {
-    const { _pop, _replace } = yield call(useEnhancedNavigation);
     yield put(signInUserThunk({email: user.email, password: user.password}) as any);
-
-    yield _pop();
-    yield _replace(NavigationScreens.Dashboard);
+    yield put(popAndReplaceScreenAction({screen: NavigationScreens.Dashboard}));
 }
 
 function* createUserWithAdditionalData(user: any): any {

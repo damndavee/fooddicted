@@ -12,8 +12,6 @@ import { FormType } from '../../store/auth/auth.type';
 const AuthScreen = (props: AuthScreenProps) => {
   const { currentRoute, texts } = props;
 
-  console.log("CURRENT ROUTE: ", currentRoute);
-
   const {handleChange, handleSubmit, userData, getFieldValidation } = useForm(currentRoute === 'signup');
 
   return (
