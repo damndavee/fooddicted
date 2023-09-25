@@ -1,9 +1,9 @@
 export type AuthUser = {
     email: string;
     password: string;
-    nickname: string;
+    nickname?: string;
     id: number | string;
-    confirmPassword: string;
+    confirmPassword?: string;
 }
 
 export type UserData = Pick<AuthUser, "email" | "id" | "nickname">;
@@ -18,6 +18,9 @@ export type ResponseKeys = "email" | "expiresIn" | "idToken" | "kind" | "localId
 export type FirebaseResponse = Record<ResponseKeys, string>;
 
 export type Fields = 'email' | 'password' | 'nickname' | 'confirmPassword';
+
+export type Form = Record<Fields, {formType: string[], value: string}>;
+export type FormType = "signup" | "signin";
 
 export type Validator = (value: string, meta: any) => string | undefined | boolean;
 export type Validators = Record<Fields, [Validator, any][]>;

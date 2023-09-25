@@ -32,7 +32,7 @@ const FormControlInputComponent = (props: FormControlInputComponentType) => {
     }
 
     return (
-        <FormControl isInvalid={false} style={styles.formControl} >
+        <FormControl isInvalid={!props.isValid} style={styles.formControl} >
             <Input
                 {...INPUT_VARIANT_STYLES[props.variant]}
                 onChangeText={props.onChange.bind(this, props.id)}
@@ -40,7 +40,8 @@ const FormControlInputComponent = (props: FormControlInputComponentType) => {
                 id={props.id}
                 placeholder={props.placeholder}
                 placeholderTextColor={props.variant === "filled" ? "lightText" : "text.500"}
-                leftElement={renderLeftInputElement()} 
+                leftElement={renderLeftInputElement()}
+                type={props.type}
             />
             <FormControl.ErrorMessage _text={{color: "red.600"}} leftIcon={<Ionicons size={14} name='warning-sharp' color="red" />}>
                 <Text>{props.errorMessage}</Text>
