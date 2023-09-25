@@ -19,7 +19,7 @@ const EnhancedReadAboutScreen = withMainScreen<ReadAboutScreenProps>(ReadAboutSc
 
 export function RootStacNotAuthenticatedkNavigation() {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerBackButtonMenuEnabled: true}}>
             <Stack.Screen name="Welcome" component={EnhancedWelcomeScreen} options={{
                 title: "Welcome",
                 headerShown: false

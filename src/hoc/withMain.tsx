@@ -1,11 +1,12 @@
 import { ComponentType } from "react";
-import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack"
+import { useRoute, RouteProp } from "@react-navigation/native";
 
 import { NavigationScreens } from "../navigation/screens";
 import { RootStackParamList } from "../navigation/stack/type";
 import { FORM_TYPE_OBJECT } from "../utils/consts";
 import { versions } from "../utils/versions.json";
+import { useAppDispatch } from "../store/store";
+import { navigateAction } from "../store/navigation/navigation.action";
 
 type FormType = "signin" | "signup";
 
@@ -26,13 +27,24 @@ export type ReadAboutScreenProps = {
 export type WithMainScreenProps = ReadAboutScreenProps | WelcomeScreenProps | AuthScreenProps | (WelcomeScreenProps & AuthScreenProps & ReadAboutScreenProps);
 
 const withMainScreen = <T extends WithMainScreenProps>(DumbComponent: ComponentType<T>) => () => {
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const dispatch = useAppDispatch();
+    
     const route = useRoute<RouteProp<RootStackParamList>>();
 
     const CURRENT_ROUTE = route?.params?.id || "signin";
 
-    const handleGoToAuth = (id: string) => navigation.navigate(NavigationScreens.Auth, { id });
-    const handleGoToReadAbout = () => navigation.navigate(NavigationScreens.ReadAbout);
+    const handleGoToAuth = (id: string) => {
+        dispatch(navigateAction({
+            screen: NavigationScreens.Auth, 
+            params: { id }
+        }));
+    }
+
+    const handleGoToReadAbout = () => {
+        dispatch(navigateAction({
+            screen: NavigationScreens.ReadAbout,
+        }))
+    }
 
     const properties = {
         onGoToAuth: handleGoToAuth,
