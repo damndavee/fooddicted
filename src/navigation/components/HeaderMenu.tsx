@@ -14,7 +14,7 @@ const HeaderMenu = () => {
             <Menu p={0} w="200" shouldOverlapWithTrigger={false} placement='bottom right' trigger={triggerProps => {
                 return (
                     <Button style={styles.button} variant="ghost" {...triggerProps}>
-                        <HamburgerIcon color='#fff' size={7} />
+                        <HamburgerIcon color={COLORS.tertiary} size={7} />
                     </Button>
                 )
             }}>
@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
     hamburgerContainer: {
         flex: 1,
         alignItems: 'flex-end',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     button: {
-        backgroundColor: COLORS.tertiary,
+        backgroundColor: 'transparent',
     },
     borderBottom: {
         borderBottomColor: COLORS.tertiary_light, 
