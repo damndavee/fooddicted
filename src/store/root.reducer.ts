@@ -8,7 +8,7 @@ import navigationReducer from "./navigation/navigation.reducer";
 const authPersistConfig = {
     key: 'auth',
     storage: AsyncStorage,
-    whitelist: ['users'],
+    whitelist: ['users', 'authUser'],
 }
 
 export const rootReducer = combineReducers({
