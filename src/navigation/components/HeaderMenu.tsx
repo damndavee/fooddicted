@@ -7,7 +7,7 @@ import useMenu from '../../hooks/useMenu';
 
 const HeaderMenu = () => {
 
-    const { handleGoToAddRecipeScreen, handleGoToSearchRecipesScreen, handleGoToSettingsScreen, handleLogout } = useMenu();
+    const { handleGoToAddRecipeScreen, handleGoToSearchRecipesScreen, handleLogout } = useMenu();
 
     return (
         <View style={styles.hamburgerContainer}>
@@ -25,10 +25,6 @@ const HeaderMenu = () => {
                 <Menu.Item onPress={handleGoToSearchRecipesScreen} style={styles.borderBottom} >
                     <IconButton color={COLORS.tertiary} name='search-circle-outline' size={24} />
                     <Text style={styles.text}>Search Recipe</Text>
-                </Menu.Item>
-                <Menu.Item onPress={handleGoToSettingsScreen} style={styles.borderBottom} >
-                    <IconButton color={COLORS.tertiary} name='settings-outline' size={24} />
-                    <Text style={styles.text}>Settings</Text>
                 </Menu.Item>
                 <Menu.Item onPress={handleLogout}>
                     <IconButton color={COLORS.tertiary} name='exit-outline' size={24} />

@@ -6,5 +6,6 @@ export const COLORS = {
     tertiary_dark: "#256EAd",
     tertiary_light: "#589BDA",
     navbar: "#A3A6AB",
+    navbar_light: "##F9F9F9",
     text: "#A3ACAB",
 }
