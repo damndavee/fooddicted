@@ -14,14 +14,11 @@ const useMenu = () => {
 
     const handleGoToSearchRecipesScreen = () => navigation.navigate(NavigationScreens.SearchRecipes);
 
-    const handleGoToSettingsScreen = () => navigation.navigate(NavigationScreens.Settings);
-
     const handleLogout = () => dispatch(signOut());
 
     return {
         handleGoToAddRecipeScreen,
         handleGoToSearchRecipesScreen,
-        handleGoToSettingsScreen,
         handleLogout
     }
 }

@@ -9,7 +9,6 @@ import ReadAboutScreen from "../../screens/main/ReadAbout";
 import withMainScreen, { WelcomeScreenProps, AuthScreenProps, ReadAboutScreenProps } from "../../hoc/withMain";
 import SearchRecipesScreen from "../../screens/menu/SearchRecipes";
 import AddRecipeScreen from "../../screens/menu/AddRecipe";
-import SettingsScreen from "../../screens/menu/Settings";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,7 +42,6 @@ export function RootStackAuthenticatedNavigation() {
             }} />
             <Stack.Screen name="SearchRecipes" component={SearchRecipesScreen} />
             <Stack.Screen name="AddRecipe" component={AddRecipeScreen} />
-            <Stack.Screen name="Settings" component={SettingsScreen} />
         </Stack.Navigator>
     )
 }
