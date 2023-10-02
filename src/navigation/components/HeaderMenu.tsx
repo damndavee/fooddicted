@@ -19,15 +19,15 @@ const HeaderMenu = () => {
                 )
             }}>
                 <Menu.Item onPress={handleGoToAddRecipeScreen} style={styles.borderBottom} >
-                    <IconButton color={COLORS.tertiary} name='add-circle-outline' size={24} />
+                    <IconButton showBackgroundColor={false} type='Secondary' color={COLORS.tertiary} name='add-circle-outline' size={24} />
                     <Text style={styles.text}>Add Recipe</Text>
                 </Menu.Item>
                 <Menu.Item onPress={handleGoToSearchRecipesScreen} style={styles.borderBottom} >
-                    <IconButton color={COLORS.tertiary} name='search-circle-outline' size={24} />
+                    <IconButton showBackgroundColor={false} type='Secondary' color={COLORS.tertiary} name='search-circle-outline' size={24} />
                     <Text style={styles.text}>Search Recipe</Text>
                 </Menu.Item>
                 <Menu.Item onPress={handleLogout}>
-                    <IconButton color={COLORS.tertiary} name='exit-outline' size={24} />
+                    <IconButton showBackgroundColor={false} type='Secondary' color={COLORS.tertiary} name='exit-outline' size={24} />
                     <Text style={styles.text}>Logout</Text>
                 </Menu.Item>
             </Menu>

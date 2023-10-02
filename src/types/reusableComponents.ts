@@ -12,3 +12,10 @@ export type FormControlInputComponentType = {
     icon?: keyof typeof Ionicons.glyphMap;
     label?: string;
 }
+
+export enum ReusableComponentType {
+    Base = "Base",
+    Secondary = 'Secondary',
+}
+
+export type ReusableComponentValuesType = [string, string, string];
