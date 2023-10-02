@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Hero from '../components/Hero/Hero'
 
 const HomeScreen = () => {
   return (
-    <View>
+    <View style={styles.homeContainer}>
+      <Hero />
       <Text>HomeScreen</Text>
     </View>
   )
@@ -11,4 +13,8 @@ const HomeScreen = () => {
 
 export default HomeScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  homeContainer: {
+    flex: 1,
+  }
+})
