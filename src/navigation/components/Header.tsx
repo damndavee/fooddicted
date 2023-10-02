@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from "@expo/vector-icons"
 
 import { COLORS } from '../../utils/tokens';
-import IconButton from '../../components/Buttons/IconButton';
+import IconButton from '../../components/buttons/IconButton';
 import { useAppDispatch } from '../../store/store';
 import { navigateAction } from '../../store/navigation/navigation.action';
 import { NavigationScreens } from '../screens';

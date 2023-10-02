@@ -3,7 +3,7 @@ import { VStack, Heading, Input, Icon, Button } from "native-base";
 
 import { COLORS } from "../../utils/tokens";
 import { StyleProps } from "../../types/common";
-import IconButton from "../Buttons/IconButton";
+import IconButton from "../buttons/IconButton";
 
 export type SearchBarProps = {
     onChangeText?: (query: string) => void;

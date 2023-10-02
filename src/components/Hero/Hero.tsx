@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ImageBackground,  } from 'react-native'
 import React, { useState } from 'react'
-import IconButton from '../Buttons/IconButton'
+import IconButton from '../buttons/IconButton'
 import { COLORS } from '../../utils/tokens'
 import SearchBar from '../form/SearchBar'
 import { Button } from 'native-base'
