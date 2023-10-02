@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View, ImageBackground,  } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import IconButton from '../Buttons/IconButton'
 import { COLORS } from '../../utils/tokens'
 import SearchBar from '../form/SearchBar'
 import { Button } from 'native-base'
 
 const Hero = () => {
+    const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+
+    const handleToggleHistory = () => setIsHistoryOpen(prevState => !prevState);
+
   return (
     <View style={styles.heroContainer}>
         <ImageBackground source={require('../../../assets/hero-img.jpg')} style={styles.imgBackground} resizeMode='cover'>
@@ -18,8 +22,7 @@ const Hero = () => {
                     <Text style={styles.heading}>what would You like to cook?</Text>
                 </View>
                 <View style={styles.searchBarContainer}>
-                    <SearchBar text='Search...' width='200' showIcons />
-                    {/* <Button bgColor={COLORS.tertiary} color={COLORS.navbar_light}>Search</Button> */}
+                    <SearchBar text='Search...' width='200' showIcons isOpen={isHistoryOpen} onSearchPress={handleToggleHistory} />
                 </View>
             </View>
         </ImageBackground>
@@ -31,7 +34,8 @@ export default Hero
 
 const styles = StyleSheet.create({
     heroContainer: {
-        height: '45%',
+        height: '50%',
+        zIndex: 1000,
     },
     contentContainer: {
         position: 'relative',

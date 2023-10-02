@@ -1,22 +1,34 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { IconButton as PaperIconButton } from "react-native-paper";
-import { Button, HamburgerIcon, Menu } from 'native-base';
+import { Ionicons } from "@expo/vector-icons"
 
 import { COLORS } from '../../utils/tokens';
-import HeaderMenu from './HeaderMenu';
+import IconButton from '../../components/Buttons/IconButton';
+import { useAppDispatch } from '../../store/store';
+import { navigateAction } from '../../store/navigation/navigation.action';
+import { NavigationScreens } from '../screens';
 
 const Header = () => {
-  return (
-    <View style={styles.navigationContainer}>
-        <View style={styles.innerWrapper}>
-            <View style={styles.titleContainer}>
-                <PaperIconButton style={{margin: 0, padding: 0}} size={32} iconColor={COLORS.tertiary} icon="food" />
-                <Text style={styles.headerTitle}>Fooddicted!</Text>
+    const dispatch = useAppDispatch();
+
+    const handleGoToAddRecipeScreen = () => {
+        dispatch(navigateAction({
+            screen: NavigationScreens.AddRecipe,
+        }))
+    }
+
+    return (
+        <View style={styles.navigationContainer}>
+            <View style={styles.innerWrapper}>
+                <View style={styles.titleContainer}>
+                    <Ionicons name='fast-food-sharp' size={32} color={COLORS.tertiary} />
+                    <Text style={styles.headerTitle}>Fooddicted!</Text>
+                </View>
+                <View style={styles.buttonContainer}>
+                    <IconButton showBackgroundColor={true} isRounded name='add-sharp' onPress={handleGoToAddRecipeScreen} size={24} type='Secondary' style={{ marginRight: 15 }} />
+                </View>
             </View>
-            <HeaderMenu />
         </View>
-    </View>
-  )
+    )
 }
 
 export default Header;
@@ -25,14 +37,15 @@ const styles = StyleSheet.create({
     navigationContainer: {
         flexDirection: 'row',
         backgroundColor: "#fff",
-        alignItems: "flex-end", 
-        justifyContent: "center",
-        height: 85,
+        height: 75,
+        alignItems: 'flex-end',
     },
     innerWrapper: {
         height: 50,
         width: '100%',
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     titleContainer: {
         flex: 2,
@@ -40,16 +53,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-end',
     },
-    hamburgerContainer: {
+    buttonContainer: {
         flex: 1,
         alignItems: 'flex-end',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     headerTitle: {
         fontSize: 18,
         color: COLORS.tertiary,
     },
-    button: {
-        backgroundColor: COLORS.tertiary,
-    }
 })
