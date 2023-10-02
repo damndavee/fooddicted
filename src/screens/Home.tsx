@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Hero from '../components/Hero/Hero'
+import { HomeScreenProps } from '../hoc/withHome'
 
-const HomeScreen = () => {
+const HomeScreen = (props: HomeScreenProps) => {
   return (
     <View style={styles.homeContainer}>
-      <Hero />
+      <Hero isHistoryOpen={props.isHistoryVisible} onSearch={props.onGoToSearch} onGoToProfile={props.onGoToProfile} />
       <Text >HomeScreen</Text>
     </View>
   )

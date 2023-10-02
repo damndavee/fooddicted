@@ -5,24 +5,26 @@ import { COLORS } from '../../utils/tokens'
 import SearchBar from '../form/SearchBar'
 import { Button } from 'native-base'
 
-const Hero = () => {
-    const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+type HeroProps = {
+    isHistoryOpen: boolean;
+    onSearch: () => void;
+    onGoToProfile: () => void;
+}
 
-    const handleToggleHistory = () => setIsHistoryOpen(prevState => !prevState);
-
+const Hero = (props: HeroProps) => {
   return (
     <View style={styles.heroContainer}>
         <ImageBackground source={require('../../../assets/hero-img.jpg')} style={styles.imgBackground} resizeMode='cover'>
             <View style={styles.contentContainer}>
                 <View style={styles.profile}>
-                    <IconButton showBackgroundColor type='Secondary' isRounded onPress={() => {}} name='people-outline' size={24} />
+                    <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size={24} />
                 </View>
                 <View>
                     <Text style={styles.heading}>Tell us, |userName|</Text>
                     <Text style={styles.heading}>what would You like to cook?</Text>
                 </View>
                 <View style={styles.searchBarContainer}>
-                    <SearchBar text='Search...' width='200' showIcons isOpen={isHistoryOpen} onSearchPress={handleToggleHistory} />
+                    <SearchBar text='Search...' width='200' showIcons isOpen={props.isHistoryOpen} onSearchPress={props.onSearch} />
                 </View>
             </View>
         </ImageBackground>
