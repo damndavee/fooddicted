@@ -6,4 +6,5 @@ export enum NavigationScreens {
     AddRecipe = "AddRecipe",
     Settings = "Settings",
     SearchRecipes = "SearchRecipes",
+    Profile = "Profile",
 }

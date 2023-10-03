@@ -6,4 +6,5 @@ export type RootStackParamList = {
     AddRecipe: undefined;
     SearchRecipes: undefined;
     Settings: undefined;
+    Profile: undefined;
 }
