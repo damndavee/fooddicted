@@ -8,10 +8,10 @@ import { StyleProps } from '../../types/common';
 type IconButtonProps = {
     name: keyof typeof Ionicons.glyphMap;
     type: keyof typeof ReusableComponentType;
-    showBackgroundColor: boolean;
-    isRounded: boolean;
     size: number; //to be discussed if set 2 or 3 different sizes
     onPress: () => void;
+    showBackgroundColor?: boolean;
+    isRounded?: boolean;
     style?: StyleProps;
 }
 
