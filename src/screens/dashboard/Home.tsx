@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 
 import { HomeScreenProps } from '../../hoc/withHome'
 
@@ -8,34 +8,40 @@ import IconButton from '../../components/buttons/IconButton'
 import SearchBar from '../../components/form/SearchBar'
 
 import { COLORS } from '../../utils/tokens'
+import useSearchBar from '../../hooks/useSearchBar'
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
-    <View style={styles.homeContainer}>
-      <Hero>
-        <View style={styles.contentContainer}>
-
-          <View style={styles.profile}>
-              <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size={24} />
+    <TouchableWithoutFeedback onPress={props.loseFocusHandler} accessible={false}>
+      <View style={styles.homeContainer}>
+        <Hero>
+          <View style={styles.contentContainer}>
+            <View style={styles.profile}>
+                <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size={24} />
+            </View>
+            <View>
+                <Text style={styles.heading}>Tell us, |userName|</Text>
+                <Text style={styles.heading}>what would You like to cook?</Text>
+            </View>
+            <View style={styles.searchBarContainer}>
+                <SearchBar 
+                  placeholder='Search...' 
+                  width='200' 
+                  isSearchHistoryShown={props.isHistoryVisible} 
+                  onPressSearchButton={props.onGoToSearch} 
+                  onFocus={props.focusHandler}
+                  onChangeQuery={props.onChangeHandler}
+                  searchHistory={props.searchHistory}
+                  isClearButtonShown={props.isClearButtonVisible}
+                  onClearQuery={props.clearInputHandler}
+                  value={props.searchValue}
+                />
+            </View>
           </View>
-          <View>
-              <Text style={styles.heading}>Tell us, |userName|</Text>
-              <Text style={styles.heading}>what would You like to cook?</Text>
-          </View>
-          <View style={styles.searchBarContainer}>
-              <SearchBar 
-                text='Search...' 
-                width='200' 
-                showIcons 
-                isOpen={props.isHistoryVisible} 
-                onSearchPress={props.onGoToSearch} 
-              />
-          </View>
-        </View>
-      </Hero>
-      
-      <Text >HomeScreen</Text>
-    </View>
+        </Hero>
+        <Text >HomeScreen</Text>
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 

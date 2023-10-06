@@ -5,20 +5,30 @@ import { NavigationScreens } from "../navigation/screens";
 import { RootStackParamList } from "../navigation/stack/type";
 import { useAppDispatch } from "../store/store";
 import { navigateAction } from "../store/navigation/navigation.action";
+import useSearchBar from "../hooks/useSearchBar";
 
 
 export type HomeScreenProps = {
    onGoToProfile: () => void;
    onGoToSearch: () => void;
-   onToggleHistory: () => void;
+   clearInputHandler: () => void;
+   onChangeHandler: (t1: string) => void;
+   focusHandler: () => void;
+   loseFocusHandler: () => void;
+   searchValue: string;
+   isClearButtonVisible: boolean;
    isHistoryVisible: boolean;
+   searchHistory: any[];
 }
 
 const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => {
     const dispatch = useAppDispatch();
     const route = useRoute<RouteProp<RootStackParamList>>();
 
-    const [isHistorySearchBarOpen, setIsHistorySearchBarOpen] = useState<boolean>(false);
+    const { focusHandler, isHistoryVisible, loseFocusHandler, onChangeHandler, clearInputHandler, 
+        isClearButtonVisible, isSearchQueryValid, searchValue, searchHistoryItems } = useSearchBar();
+
+    
 
     const handleGoToProfile = () => {
         dispatch(navigateAction({
@@ -27,20 +37,26 @@ const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => 
     };
 
     const handleGoToSearch = () => {
-        dispatch(navigateAction({
-            screen: NavigationScreens.SearchRecipes
-        }))
+        if(isSearchQueryValid) {
+            dispatch(navigateAction({
+                screen: NavigationScreens.SearchRecipes
+            }));
+            clearInputHandler();
+        }
     };
-
-    const toggleHistoryVisibility = () => setIsHistorySearchBarOpen(prevState => !prevState);
-     
 
     return (
         <DumbComponent
            onGoToProfile={handleGoToProfile}
-           isHistoryVisible={isHistorySearchBarOpen}
            onGoToSearch={handleGoToSearch}
-           onToggleHistory={toggleHistoryVisibility}
+           searchHistory={searchHistoryItems}
+           searchValue={searchValue}
+           clearInputHandler={clearInputHandler}
+           isClearButtonVisible={isClearButtonVisible}
+           onChangeHandler={onChangeHandler}
+           focusHandler={focusHandler}
+           isHistoryVisible={isHistoryVisible}
+           loseFocusHandler={loseFocusHandler}
         />
     )
 }
