@@ -3,9 +3,10 @@ import { useRoute, RouteProp } from "@react-navigation/native";
 
 import { NavigationScreens } from "../navigation/screens";
 import { RootStackParamList } from "../navigation/stack/type";
-import { useAppDispatch } from "../store/store";
+import { useAppDispatch, useAppSelector } from "../store/store";
 import { navigateAction } from "../store/navigation/navigation.action";
 import useSearchBar from "../hooks/useSearchBar";
+import { localStorageRecipesSelector } from "../store/recipes/recipes.selector";
 
 
 export type HomeScreenProps = {
@@ -25,10 +26,10 @@ const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => 
     const dispatch = useAppDispatch();
     const route = useRoute<RouteProp<RootStackParamList>>();
 
+    const localStorageRecipes = useAppSelector(localStorageRecipesSelector);
+
     const { focusHandler, isHistoryVisible, loseFocusHandler, onChangeHandler, clearInputHandler, 
         isClearButtonVisible, isSearchQueryValid, searchValue, searchHistoryItems } = useSearchBar();
-
-    
 
     const handleGoToProfile = () => {
         dispatch(navigateAction({

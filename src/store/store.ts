@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 
 import { rootReducer } from "./root.reducer";
 import { rootSaga } from "./root.saga";
+import { rehydrationCompleteAction } from "./recipes/recipes.action";
 
 const sagaMiddleware = createSagaMiddleware();
 const middlewares = [logger, sagaMiddleware, thunk];
@@ -17,7 +18,10 @@ export const store = configureStore({
     middleware: middlewares,
 });
  
-export const persistor = persistStore(store);
+export const persistor = persistStore(store, null, () => {
+    store.dispatch(rehydrationCompleteAction());
+});
+
 // persistor.purge();
 
 export type RootState = ReturnType<typeof store.getState>;
