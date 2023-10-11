@@ -1,3 +1,5 @@
+import "react-native-gesture-handler";
+
 import React from 'react'
 import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
 
@@ -8,7 +10,7 @@ import IconButton from '../../components/buttons/IconButton'
 import SearchBar from '../../components/form/SearchBar'
 
 import { COLORS } from '../../utils/tokens'
-import useSearchBar from '../../hooks/useSearchBar'
+import NativeCarousel from "../../components/carousel/Carousel";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
@@ -39,7 +41,20 @@ const HomeScreen = (props: HomeScreenProps) => {
             </View>
           </View>
         </Hero>
-        <Text >HomeScreen</Text>
+        <View
+          style={{
+            alignItems: "center",
+            flex: 1
+          }}
+        >
+        <View style={{width: '100%', backgroundColor: COLORS.tertiary_light, marginVertical: 5}}>
+          <Text >SECTION - BEST RATING</Text>
+        </View>
+        <View style={{width: '100%', backgroundColor: COLORS.tertiary_light, marginVertical: 5}}>
+          <Text >SECTION - LATEST RECIPES</Text>
+        </View>
+          <NativeCarousel />
+        </View>
       </View>
     </TouchableWithoutFeedback>
   )
@@ -50,6 +65,7 @@ export default HomeScreen
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
+    flexDirection: 'column',
   },
   contentContainer: {
     position: 'relative',
