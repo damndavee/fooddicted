@@ -1,9 +1,10 @@
 import { StyleSheet } from 'react-native';
 import { Box, Pressable } from 'native-base';
 import { Ionicons } from "@expo/vector-icons"
-import { ReusableComponentType, ReusableComponentValuesType } from '../../types/reusableComponents';
+import { ReusableComponentType, ReusableComponentTypeStateIndex, ReusableComponentValuesType } from '../../types/reusableComponents';
 import { COLORS } from '../../utils/tokens';
 import { StyleProps } from '../../types/common';
+import { COMPONENT_TYPE } from '../../utils/consts';
 
 type IconButtonProps = {
     name: keyof typeof Ionicons.glyphMap;
@@ -16,24 +17,15 @@ type IconButtonProps = {
 }
 
 const IconButton = (props: IconButtonProps) => {
-  const ACTIVE = 0;
-  const PRESSED = 1;
-  const COLOR = 2;
-
   const borderRadius = props.isRounded ? 200 : 0;
-
-  const BUTTON_TYPES: Record<ReusableComponentType, ReusableComponentValuesType> = {
-    [ReusableComponentType.Base]: [COLORS.tertiary_light, COLORS.tertiary_dark, COLORS.navbar_light],
-    [ReusableComponentType.Secondary]: [COLORS.navbar_light, COLORS.navbar, COLORS.tertiary]
-  }
 
   const renderBackgroundColor = (isPressed: boolean, isHovered: boolean): string => {
     if(!props.showBackgroundColor) return 'transparent';
 
-    if(isPressed || isHovered) return BUTTON_TYPES[props.type][PRESSED];
+    if(isPressed || isHovered) return COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Pressed];
 
 
-    return BUTTON_TYPES[props.type][ACTIVE];
+    return COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Active];
   }
 
   return (
@@ -42,7 +34,7 @@ const IconButton = (props: IconButtonProps) => {
         ({isHovered, isFocused, isPressed}) => {
             return (
                 <Box bg={renderBackgroundColor(isPressed, isHovered)} style={{transform: [{scale: isPressed ? 0.96 : 1}], padding: 5, borderRadius, ...props.style}}>
-                    <Ionicons name={props.name} size={props.size} color={BUTTON_TYPES[props.type][COLOR]} />
+                    <Ionicons name={props.name} size={props.size} color={COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Color]} />
                 </Box>
             )
         }
