@@ -1,7 +1,8 @@
 import "react-native-gesture-handler";
 
 import React from 'react'
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, Text, TouchableWithoutFeedback, ScrollView, SafeAreaView, ImageBackground, StatusBar } from 'react-native'
+import {View} from "native-base";
 
 import { HomeScreenProps } from '../../hoc/withHome'
 
@@ -14,48 +15,95 @@ import NativeCarousel from "../../components/carousel/Carousel";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
-    <TouchableWithoutFeedback onPress={props.loseFocusHandler} accessible={false}>
-      <View style={styles.homeContainer}>
-        <Hero>
-          <View style={styles.contentContainer}>
-            <View style={styles.profile}>
-                <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size={24} />
+    <TouchableWithoutFeedback onPress={props.loseFocusHandler} accessible={false} style={{flex: 1}}>
+      <ScrollView>
+        <View style={styles.homeContainer}>
+          <Hero>
+            <View style={styles.contentContainer}>
+              <View style={styles.profileCTAContainer}>
+                <View style={styles.profile}>
+                    <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size={24} />
+                </View>
+              </View>
+              <View>
+                <View style={{marginVertical: 10}}>
+                    <Text style={styles.heading}>Tell us, |userName|</Text>
+                    <Text style={styles.heading}>what would You like to cook?</Text>
+                </View>
+                <View style={styles.searchBarContainer}>
+                    <SearchBar 
+                      placeholder='Search...' 
+                      width='200' 
+                      isSearchHistoryShown={props.isHistoryVisible} 
+                      onPressSearchButton={props.onGoToSearch} 
+                      onFocus={props.focusHandler}
+                      onChangeQuery={props.onChangeHandler}
+                      searchHistory={props.searchHistory}
+                      isClearButtonShown={props.isClearButtonVisible}
+                      onClearQuery={props.clearInputHandler}
+                      value={props.searchValue}
+                      />
+                </View>
+              </View>
             </View>
-            <View>
-                <Text style={styles.heading}>Tell us, |userName|</Text>
-                <Text style={styles.heading}>what would You like to cook?</Text>
-            </View>
-            <View style={styles.searchBarContainer}>
-                <SearchBar 
-                  placeholder='Search...' 
-                  width='200' 
-                  isSearchHistoryShown={props.isHistoryVisible} 
-                  onPressSearchButton={props.onGoToSearch} 
-                  onFocus={props.focusHandler}
-                  onChangeQuery={props.onChangeHandler}
-                  searchHistory={props.searchHistory}
-                  isClearButtonShown={props.isClearButtonVisible}
-                  onClearQuery={props.clearInputHandler}
-                  value={props.searchValue}
-                />
-            </View>
+          </Hero>
+          <View style={styles.carouselContainer}>
+            <NativeCarousel />
           </View>
-        </Hero>
-        <View
-          style={{
-            alignItems: "center",
-            flex: 1
-          }}
-        >
-        <View style={{width: '100%', backgroundColor: COLORS.tertiary_light, marginVertical: 5}}>
-          <Text >SECTION - BEST RATING</Text>
         </View>
-        <View style={{width: '100%', backgroundColor: COLORS.tertiary_light, marginVertical: 5}}>
-          <Text >SECTION - LATEST RECIPES</Text>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
         </View>
-          <NativeCarousel />
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
         </View>
-      </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+        <View style={{marginVertical: 10}}>
+            <Text style={styles.heading}>Tell us, |userName|</Text>
+            <Text style={styles.heading}>what would You like to cook?</Text>
+        </View>
+      </ScrollView>
     </TouchableWithoutFeedback>
   )
 }
@@ -68,21 +116,25 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   contentContainer: {
-    position: 'relative',
     height: '100%',
     width: '100%',
     padding: 10,
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     gap: 10
+  },
+  profileCTAContainer: {
+    margin: 10
   },
   searchBarContainer: {
     flexDirection: 'row',
-    gap: 5,
+    marginVertical: 5,
+  },
+  carouselContainer: {
+    alignItems: 'center'
   },
   profile: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
+   width: '100%',
+   alignItems: 'flex-end'
   },
   heading: {
     color: COLORS.navbar_light,
@@ -92,5 +144,5 @@ const styles = StyleSheet.create({
     textShadowColor: '#000',
     textShadowOffset: {height: 2, width: 2},
     textShadowRadius: 2
-},
+  },
 })

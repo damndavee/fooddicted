@@ -1,7 +1,11 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Dimensions } from "react-native";
 
 import Carousel from "react-native-reanimated-carousel";
+import CarouselItem from "./CarouselItem";
+import PaginationItem from "./PaginationItem";
+import { useSharedValue } from "react-native-reanimated";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const colors = [
   "#26292E",
@@ -13,38 +17,57 @@ const colors = [
 ];
 
 const NativeCarousel = () => {
+  const [currentIndex, setCurrentIndex] = React.useState<number>(0);
+  const progressValue = useSharedValue<number>(0);
+
+  const width = Dimensions.get('window').width;
+
   return (
+    <GestureHandlerRootView style={{flex: 1}}>
        <Carousel
           style={{
-            width: "100%",
-            height: 240,
-            alignItems: "center",
-            justifyContent: "center",
+            width: width * 0.86,
           }}
-          width={280}
-          height={210}
+          width={width * 0.86}
+          height={width * 0.6}
           pagingEnabled={true}
           snapEnabled={true}
-          mode="horizontal-stack"
+          mode="parallax"
           loop={true}
           autoPlay={false}
-          autoPlayReverse={true}
-          data={[...new Array(6).keys()]}
-          modeConfig={{
-            snapDirection: 'right',
-            stackInterval: 18,
+          autoPlayReverse={false}
+          onProgressChange={(_, absoluteProgress) =>
+            (progressValue.value = absoluteProgress)
+          }
+          maxScrollDistancePerSwipe={width}
+          panGestureHandlerProps={{
+            activeOffsetX: [-10, 10],
           }}
-          customConfig={() => ({ type: "positive", viewCount: 5 })}
-          renderItem={({ index }) => (
-            <View
-            style={{flex: 1, borderWidth: 1, justifyContent: 'center', backgroundColor: colors[index]}}
-                >
-                <Text style={{ textAlign: 'center', fontSize: 30 }}>
-                {index}
-                </Text>
-                </View>
-              )}
-        />
+          data={[...new Array(6).keys()]}
+          onSnapToItem={index => setCurrentIndex(index)}
+          modeConfig={{
+            parallaxScrollingScale: 0.9,
+            parallaxScrollingOffset: 50,
+          }}
+          renderItem={(item) => <CarouselItem item={item} currentIndex={currentIndex} variant="big" background={colors[item.index]} text={item.index} />}
+          />
+         {!!progressValue && (
+           <View style={{flexDirection: "row", justifyContent: "space-between", width: 100, alignSelf: "center"}}>
+              {colors.map((backgroundColor, index) => {
+                return (
+                  <PaginationItem
+                    backgroundColor={backgroundColor}
+                    animValue={progressValue}
+                    index={index}
+                    key={index}
+                    isRotate={false}
+                    length={colors.length}
+                    />
+                );
+              })}
+            </View>
+      )}
+      </GestureHandlerRootView>
   );
 }
 
