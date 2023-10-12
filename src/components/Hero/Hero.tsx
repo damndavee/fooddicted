@@ -19,7 +19,7 @@ export default Hero
 
 const styles = StyleSheet.create({
     heroContainer: {
-        height: '50%',
+        height: 300,
         zIndex: 1000,
     },
     imgBackground: {

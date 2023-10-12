@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../store/store";
 import { navigateAction } from "../store/navigation/navigation.action";
 import useSearchBar from "../hooks/useSearchBar";
 import { localStorageRecipesSelector } from "../store/recipes/recipes.selector";
+import { DetailedRecipeType } from "../store/recipes/recipes.type";
 
 
 export type HomeScreenProps = {
@@ -26,7 +27,7 @@ const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => 
     const dispatch = useAppDispatch();
     const route = useRoute<RouteProp<RootStackParamList>>();
 
-    const localStorageRecipes = useAppSelector(localStorageRecipesSelector);
+    const localStorageRecipes: DetailedRecipeType[] = useAppSelector(localStorageRecipesSelector);
 
     const { focusHandler, isHistoryVisible, loseFocusHandler, onChangeHandler, clearInputHandler, 
         isClearButtonVisible, isSearchQueryValid, searchValue, searchHistoryItems } = useSearchBar();
