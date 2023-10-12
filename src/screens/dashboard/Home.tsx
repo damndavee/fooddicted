@@ -12,6 +12,7 @@ import SearchBar from '../../components/form/SearchBar'
 
 import { COLORS } from '../../utils/tokens'
 import NativeCarousel from "../../components/carousel/Carousel";
+import Section from "../../components/common/Section";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
@@ -47,61 +48,10 @@ const HomeScreen = (props: HomeScreenProps) => {
               </View>
             </View>
           </Hero>
+          <Section type="Secondary" label="Daily Inspirations" size="Big" />
           <View style={styles.carouselContainer}>
             <NativeCarousel />
           </View>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
-        </View>
-        <View style={{marginVertical: 10}}>
-            <Text style={styles.heading}>Tell us, |userName|</Text>
-            <Text style={styles.heading}>what would You like to cook?</Text>
         </View>
       </ScrollView>
     </TouchableWithoutFeedback>
