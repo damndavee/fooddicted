@@ -6,7 +6,7 @@ import { RootStackParamList } from "../navigation/stack/type";
 import { useAppDispatch, useAppSelector } from "../store/store";
 import { navigateAction } from "../store/navigation/navigation.action";
 import useSearchBar from "../hooks/useSearchBar";
-import { localStorageRecipesSelector } from "../store/recipes/recipes.selector";
+import { carouselRecipesSelector, localStorageRecipesSelector } from "../store/recipes/recipes.selector";
 import { DetailedRecipeType } from "../store/recipes/recipes.type";
 
 
@@ -21,6 +21,7 @@ export type HomeScreenProps = {
    isClearButtonVisible: boolean;
    isHistoryVisible: boolean;
    searchHistory: any[];
+   carouselData: DetailedRecipeType[];
 }
 
 const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => {
@@ -28,6 +29,7 @@ const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => 
     const route = useRoute<RouteProp<RootStackParamList>>();
 
     const localStorageRecipes: DetailedRecipeType[] = useAppSelector(localStorageRecipesSelector);
+    const carouselRecipes: DetailedRecipeType[] = useAppSelector(carouselRecipesSelector);
 
     const { focusHandler, isHistoryVisible, loseFocusHandler, onChangeHandler, clearInputHandler, 
         isClearButtonVisible, isSearchQueryValid, searchValue, searchHistoryItems } = useSearchBar();
@@ -59,6 +61,7 @@ const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => 
            focusHandler={focusHandler}
            isHistoryVisible={isHistoryVisible}
            loseFocusHandler={loseFocusHandler}
+           carouselData={carouselRecipes}
         />
     )
 }

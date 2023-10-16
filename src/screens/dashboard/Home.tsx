@@ -50,7 +50,7 @@ const HomeScreen = (props: HomeScreenProps) => {
           </Hero>
           <Section type="Secondary" label="Daily Inspirations" size="Big" />
           <View style={styles.carouselContainer}>
-            <NativeCarousel />
+            <NativeCarousel data={props.carouselData} />
           </View>
         </View>
       </ScrollView>
