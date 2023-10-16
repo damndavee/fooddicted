@@ -88,4 +88,5 @@ export type DetailedRecipeType = {
     analyzedInstructions: AnalyzedInstructions[];
     originalId: null;
     spoonacularSourceUrl: string;
+    rating: string;
 }
