@@ -24,3 +24,22 @@ export function generateRandomRating(): string {
             return '0.5';
     }
 }
+
+export function generateRandomDate(start: Date, end: Date, startHour: number, endHour: number): Date {
+    const startTime = start.getTime();
+    const endTime = end.getTime();
+    const randomTime = startTime + Math.random() * (endTime - startTime);
+    
+    const randomDate = new Date(randomTime);
+    const randomHour = startHour + Math.random() * (endHour - startHour) | 0;
+  
+    randomDate.setHours(randomHour);
+  
+    return new Date(randomDate);
+}
+
+export const shortFormatDate = (date: Date) => {
+    const formattedDate = new Date(date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' }).replace(',', '');
+    const [month, day, year] = formattedDate.split(' ');
+    return `${day} ${month} ${year}`;
+};

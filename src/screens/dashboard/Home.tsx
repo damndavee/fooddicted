@@ -13,6 +13,7 @@ import SearchBar from '../../components/form/SearchBar'
 import { COLORS } from '../../utils/tokens'
 import NativeCarousel from "../../components/carousel/Carousel";
 import Section from "../../components/common/Section";
+import { shortFormatDate } from "../../utils/functions";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
@@ -43,7 +44,7 @@ const HomeScreen = (props: HomeScreenProps) => {
                       isClearButtonShown={props.isClearButtonVisible}
                       onClearQuery={props.clearInputHandler}
                       value={props.searchValue}
-                      />
+                    />
                 </View>
               </View>
             </View>
@@ -51,6 +52,15 @@ const HomeScreen = (props: HomeScreenProps) => {
           <Section type="Secondary" label="Daily Inspirations" size="Big" />
           <View style={styles.carouselContainer}>
             <NativeCarousel data={props.carouselData} />
+          </View>
+          <Section type="Secondary" label="Most Recent" size="Big" />
+            <View>
+              {props.mostRecentRecipes.map(recipe => <Text>{recipe.title} ::::: {shortFormatDate(recipe.date)}</Text>)}
+            </View>
+          <Section type="Secondary" label="Recently Viewed" size="Big" />
+          <Section type="Secondary" label="Best Rating" size="Big" />
+          <View>
+            {props.bestRatedRecipes.map(recipe => <Text>{recipe.title} ::::: {recipe.rating}stars</Text>)}
           </View>
         </View>
       </ScrollView>

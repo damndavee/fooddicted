@@ -1,7 +1,7 @@
 import { spoonacularAPI } from "../utils/config";
 
 import { RawRecipeType, RandomRecipeParams, DetailedRecipeType } from "../store/recipes/recipes.type";
-import { generateRandomRating } from "../utils/functions";
+import { generateRandomDate, generateRandomRating } from "../utils/functions";
 
 export class RecipeService {
     static async fetchRecipeByQuery(query: string): Promise<RawRecipeType[]> {
@@ -37,6 +37,6 @@ export class RecipeService {
 
         const { data } = await spoonacularAPI.get(`/random?number=${numberToFetch}&tags=${parsedTags}`);
 
-        return data.recipes.map((recipe: DetailedRecipeType )=> ({...recipe, rating: generateRandomRating()}));
+        return data.recipes.map((recipe: DetailedRecipeType )=> ({...recipe, rating: generateRandomRating(), date: generateRandomDate(new Date(2018, 0, 1), new Date(), 0, 24)}));
     }
 }

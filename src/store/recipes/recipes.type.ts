@@ -89,4 +89,5 @@ export type DetailedRecipeType = {
     originalId: null;
     spoonacularSourceUrl: string;
     rating: string;
+    date: Date;
 }
