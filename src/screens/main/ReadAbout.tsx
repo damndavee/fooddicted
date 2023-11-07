@@ -32,11 +32,11 @@ export default ReadAboutScreen;
 const styles = StyleSheet.create({
     rootContainer: {
         flex: 1,
-        backgroundColor: COLORS.text,
+        backgroundColor: COLORS.secondaryDark,
     },
     versionContainer: {
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: COLORS.secondaryLight,
     },
     bodyContainer: {
         minHeight: 150,
@@ -45,11 +45,11 @@ const styles = StyleSheet.create({
     header: {
         flex: 1,
         height: 25,
-        backgroundColor: COLORS.tertiary_dark,
+        backgroundColor: COLORS.primaryDark,
         justifyContent: 'center',
         paddingHorizontal: 10
     },
     date: {
-        color: '#fff'
+        color: COLORS.secondaryLight
     }
 })

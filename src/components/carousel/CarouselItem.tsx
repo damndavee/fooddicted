@@ -34,9 +34,9 @@ const CarouselItem = (props: CarouselItemProps) => {
         <View style={styles.ratingContainer}>
           <StarRating rating={props.item.rating} />
           <Badge label={`${props.item.readyInMinutes} mins`} type='Tertiary' />
-          <Text style={{color: COLORS.tertiary, fontSize: 16}}>{props.item.servings} servings</Text>
+          <Text style={{color: COLORS.primary, fontSize: 16}}>{props.item.servings} servings</Text>
         </View>
-        <Text style={{color: COLORS.tertiary, fontWeight: 'bold', fontSize: 20}}>{props.item.title}</Text>
+        <Text style={{color: COLORS.primary, fontWeight: 'bold', fontSize: 20}}>{props.item.title}</Text>
         <Button 
           fullWidth
           label={`${ingredientsCount} ingredients`} 

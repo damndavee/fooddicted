@@ -16,7 +16,7 @@ const AuthScreen = (props: AuthScreenProps) => {
 
   return (
     <KeyboardAvoidingView behavior='height' style={styles.rootContainer} >
-      <LinearGradient locations={[0.1, 0.1]} start={{x: 0, y: 0.8}} end={{x: 0.2, y: 1}} colors={[COLORS.tertiary_light, COLORS.secondary]} style={styles.innerContainer}>
+      <LinearGradient locations={[0.1, 0.1]} start={{x: 0, y: 0.8}} end={{x: 0.2, y: 1}} colors={[COLORS.primaryLight, COLORS.secondaryLight]} style={styles.innerContainer}>
         <View style={styles.formContainer}>
           <View style={styles.form}>
             {currentRoute === 'signup' && (
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   button: {
-    backgroundColor: COLORS.primary2,
+    backgroundColor: COLORS.tertiaryLight,
     borderWidth: 0,
     borderRadius: 0,
   }

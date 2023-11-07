@@ -12,7 +12,7 @@ const INPUT_VARIANT_STYLES = {
         borderColor: COLORS.text,
     },
     "filled": {
-        backgroundColor: COLORS.tertiary_light,
+        backgroundColor: COLORS.primaryLight,
         borderRadius: 5,
         borderWidth: 0,
     },
