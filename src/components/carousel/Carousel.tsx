@@ -59,7 +59,6 @@ const NativeCarousel = (props: CarouselProps) => {
               {props.data.map((item, index) => {
                 return (
                   <PaginationItem
-                    backgroundColor={COLORS.navbar}
                     animValue={progressValue}
                     index={index}
                     key={index}

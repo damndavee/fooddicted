@@ -24,8 +24,8 @@ const SearchBar = (props: SearchBarProps) => {
         <View style={{flex: 1, position: 'relative'}}>
           <Input
             placeholder={props.placeholder}
-            color={COLORS.navbar}
-            placeholderTextColor={COLORS.navbar}
+            color={COLORS.secondary}
+            placeholderTextColor={COLORS.secondary}
             isDisabled={false}
             width="100%"
             value={props.value}
@@ -36,16 +36,16 @@ const SearchBar = (props: SearchBarProps) => {
             onFocus={props.onFocus}
             fontSize="16"
             outlineColor="transparent"
-            backgroundColor={COLORS.navbar_light}
+            backgroundColor={COLORS.secondaryLight}
             onChangeText={props.onChangeQuery}
             InputRightElement={
                 <>
                     {props.isClearButtonShown && (
-                        <Icon size={8} bgColor={COLORS.tertiary} rounded="none" as={
+                        <Icon size={8} bgColor={COLORS.primary} rounded="none" as={
                             <IconButton style={{marginRight: 7, padding: 7}} type="Secondary" name="close-sharp" size={20} onPress={props.onClearQuery} />
                         } />
                     )}
-                    <Icon size={8} bgColor={COLORS.tertiary} rounded="none" as={
+                    <Icon size={8} bgColor={COLORS.primary} rounded="none" as={
                         <IconButton style={{marginRight: 7, padding: 7}} type="Primary" name="search-sharp" size={20} showBackgroundColor onPress={props.onPressSearchButton} />
                     } />
                 </>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         top: 50,
         zIndex: 1001,
         width: '100%',
-        backgroundColor: COLORS.tertiary,
+        backgroundColor: COLORS.primary,
     },
 }) 
 

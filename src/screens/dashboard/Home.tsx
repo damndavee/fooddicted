@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: "#fff"
+    backgroundColor: COLORS.secondaryLight
   },
   contentContainer: {
     height: '100%',
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   carouselContainer: {
-    backgroundColor: COLORS.navbar_light,
+    backgroundColor: COLORS.secondaryLight,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center'
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
    alignItems: 'flex-end'
   },
   heading: {
-    color: COLORS.navbar_light,
+    color: COLORS.secondaryLight,
     fontSize: 20,
     alignSelf: 'flex-start',
     fontWeight: 'bold',

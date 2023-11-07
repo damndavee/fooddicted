@@ -29,7 +29,7 @@ export const BottomNavigation = ({ state, descriptors, navigation }: BottomTabBa
         const label = options.tabBarLabel || options.title || route.name;
         const isFocused = state.index === index;
 
-        const TYPOGRAPHY_COLOR = isFocused ? COLORS.tertiary : COLORS.text;
+        const TYPOGRAPHY_COLOR = isFocused ? COLORS.primary : COLORS.text;
 
         return (
           <TouchableOpacity
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingTop: 11,
     paddingBottom: 10,
-    backgroundColor: COLORS.navbar_light,
-    borderTopColor: COLORS.navbar,
+    backgroundColor: COLORS.secondaryLight,
+    borderTopColor: COLORS.secondary,
     borderTopWidth: 0.5,
   },
   iconContainer: {

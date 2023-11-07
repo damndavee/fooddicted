@@ -4,7 +4,6 @@ import { COLORS } from "../../utils/tokens";
 
 const PaginationItem: React.FC<{
     index: number
-    backgroundColor: string
     length: number
     animValue: Animated.SharedValue<number>
     isRotate?: boolean
@@ -38,7 +37,7 @@ const PaginationItem: React.FC<{
     return (
       <View
         style={{
-          backgroundColor: COLORS.navbar,
+          backgroundColor: COLORS.secondary,
           width,
           height: width,
           borderRadius: 50,
@@ -54,7 +53,7 @@ const PaginationItem: React.FC<{
           style={[
             {
               borderRadius: 50,
-              backgroundColor: COLORS.tertiary_dark,
+              backgroundColor: COLORS.primaryDark,
               flex: 1,
             },
             animStyle,

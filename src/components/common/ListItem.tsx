@@ -13,7 +13,7 @@ const ListItem = (props: PropsWithChildren<ListItemProps>) => {
     <View style={styles.listItemContainer}>
         <View style={styles.sectionContainer}>
             <Text style={styles.title}>{props.sectionTitle}</Text>
-            <Button variant="solid" borderRadius={20} style={{backgroundColor: COLORS.listItem_light}}>See all</Button>
+            <Button variant="solid" borderRadius={20} style={{backgroundColor: COLORS.tertiaryLight}}>See all</Button>
         </View>
         <ScrollView style={{flex: 1}}>
             {props.children}

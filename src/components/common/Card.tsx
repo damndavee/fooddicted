@@ -44,7 +44,7 @@ export default Card
 
 const styles = StyleSheet.create({
     cardContainer: {
-      backgroundColor: COLORS.card,
+      backgroundColor: COLORS.tertiaryLight,
       borderRadius: 15,
       overflow: 'hidden',
       margin: 10,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     },
     title: {
       fontSize: 14,
-      color: COLORS.navbar_light,
+      color: COLORS.secondaryLight,
       fontWeight: 'bold'
     }
 })

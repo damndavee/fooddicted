@@ -12,7 +12,7 @@ const WelcomeScreen = (props: WelcomeScreenProps) => {
   const { onGoToAuth, onGoToReadAbout } = props;
 
   return (
-    <LinearGradient locations={[0.1, 0.1]} start={{x: 0, y: 0.7}} end={{x: 1, y: 1}} colors={[COLORS.tertiary, COLORS.secondary]} style={styles.rootContainer} >
+    <LinearGradient locations={[0.1, 0.1]} start={{x: 0, y: 0.7}} end={{x: 1, y: 1}} colors={[COLORS.primary, COLORS.secondaryLight]} style={styles.rootContainer} >
       <View style={styles.iconContainer}>
         <MainScreenIcon style={styles.icon} />
       </View>
@@ -26,9 +26,9 @@ const WelcomeScreen = (props: WelcomeScreenProps) => {
         </View>
       </View>
       <View style={styles.actionContainer}>
-        <Button variant="ghost" _text={{color: "black", paddingLeft: 5}} onPress={onGoToAuth.bind(this, 'signin')} android_ripple={{color: COLORS.text}} leftIcon={<Ionicons size={24} name='arrow-forward-circle-outline' />} style={styles.button}>Sign in</Button>
-        <Button variant="ghost" _text={{color: "black", paddingLeft: 5}} onPress={onGoToAuth.bind(this, 'signup')} android_ripple={{color: COLORS.text}} leftIcon={<Ionicons size={24} name='add-circle-outline' />} style={styles.button}>Sign up</Button>
-        <Button variant="ghost" _text={{color: "black", paddingLeft: 5}} onPress={onGoToReadAbout} android_ripple={{color: COLORS.text}} leftIcon={<Ionicons size={24} name='book-outline' />} style={styles.button}>Read about</Button>
+        <Button variant="ghost" _text={{color: "black", paddingLeft: 5}} onPress={onGoToAuth.bind(this, 'signin')} android_ripple={{color: COLORS.textLight}} leftIcon={<Ionicons size={24} name='arrow-forward-circle-outline' />} style={styles.button}>Sign in</Button>
+        <Button variant="ghost" _text={{color: "black", paddingLeft: 5}} onPress={onGoToAuth.bind(this, 'signup')} android_ripple={{color: COLORS.textLight}} leftIcon={<Ionicons size={24} name='add-circle-outline' />} style={styles.button}>Sign up</Button>
+        <Button variant="ghost" _text={{color: "black", paddingLeft: 5}} onPress={onGoToReadAbout} android_ripple={{color: COLORS.textLight}} leftIcon={<Ionicons size={24} name='book-outline' />} style={styles.button}>Read about</Button>
       </View>
     </LinearGradient>
   )
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   headingContainer: {
-    backgroundColor: COLORS.primary,
+    backgroundColor: COLORS.sub,
     width: "70%",
     paddingHorizontal: 15,
     paddingVertical: 20,
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-start',
     marginHorizontal: 15,
-    borderBottomColor: "#ddd",
+    borderBottomColor: COLORS.secondaryDark,
     borderBottomWidth: 1,
   }
 })
