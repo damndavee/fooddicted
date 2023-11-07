@@ -43,3 +43,8 @@ export const shortFormatDate = (date: Date) => {
     const [month, day, year] = formattedDate.split(' ');
     return `${day} ${month} ${year}`;
 };
+
+export function capitalizeTitle(word: string) {
+    if (!word) return word;
+    return word[0].toUpperCase() + word.substr(1).toLowerCase();
+}

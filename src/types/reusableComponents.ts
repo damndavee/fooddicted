@@ -14,8 +14,9 @@ export type FormControlInputComponentType = {
 }
 
 export enum ReusableComponentType {
-    Base = "Base",
+    Primary = "Primary",
     Secondary = 'Secondary',
+    Tertiary = 'Tertiary',
 }
 
 export enum ReusableComponentSize {

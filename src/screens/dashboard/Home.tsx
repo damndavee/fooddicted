@@ -2,22 +2,23 @@ import "react-native-gesture-handler";
 
 import React from 'react'
 import { StyleSheet, Text, TouchableWithoutFeedback, ScrollView, SafeAreaView, ImageBackground, StatusBar } from 'react-native'
-import {View} from "native-base";
+import {FlatList, View} from "native-base";
 
 import { HomeScreenProps } from '../../hoc/withHome'
 
-import Hero from '../../components/Hero/Hero'
+import Hero from '../../components/hero/Hero'
 import IconButton from '../../components/buttons/IconButton'
 import SearchBar from '../../components/form/SearchBar'
 
 import { COLORS } from '../../utils/tokens'
 import NativeCarousel from "../../components/carousel/Carousel";
 import Section from "../../components/common/Section";
-import { shortFormatDate } from "../../utils/functions";
+import Card from "../../components/common/Card";
+import ListItem from "../../components/common/ListItem";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
-    <TouchableWithoutFeedback onPress={props.loseFocusHandler} accessible={false} style={{flex: 1}}>
+    <TouchableWithoutFeedback onPress={props.loseFocusHandler} accessible={false} style={styles.screenContainer}>
       <ScrollView>
         <View style={styles.homeContainer}>
           <Hero>
@@ -49,18 +50,37 @@ const HomeScreen = (props: HomeScreenProps) => {
               </View>
             </View>
           </Hero>
-          <Section type="Secondary" label="Daily Inspirations" size="Big" />
+
+          <Section type="Tertiary" label="Daily inspirations" size="Big" />
           <View style={styles.carouselContainer}>
             <NativeCarousel data={props.carouselData} />
           </View>
-          <Section type="Secondary" label="Most Recent" size="Big" />
-            <View>
-              {props.mostRecentRecipes.map(recipe => <Text>{recipe.title} ::::: {shortFormatDate(recipe.date)}</Text>)}
-            </View>
-          <Section type="Secondary" label="Recently Viewed" size="Big" />
-          <Section type="Secondary" label="Best Rating" size="Big" />
+
+          <ListItem sectionTitle="Most Recent">
+            <FlatList data={props.mostRecentRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
+          </ListItem>
+          <View style={{height: 250, width: '100%'}}>
+            <Text>ARTICLE</Text>
+          </View>
+          <ListItem sectionTitle="Popular creators">
+            
+          </ListItem>
+          <Section type="Tertiary" label="Best Rating" size="Big" />
           <View>
-            {props.bestRatedRecipes.map(recipe => <Text>{recipe.title} ::::: {recipe.rating}stars</Text>)}
+            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
+          </View>
+          <View style={{height: 250, width: '100%'}}>
+            <Text>ARTICLE</Text>
+          </View>
+          <ListItem sectionTitle="Top categories">
+            
+          </ListItem>
+          <Section type="Tertiary" label="Recently Viewed" size="Big" />
+          <View>
+            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
+          </View>
+          <View style={{height: 250, width: '100%'}}>
+            <Text>ALL RECIPES</Text>
           </View>
         </View>
       </ScrollView>
@@ -71,9 +91,13 @@ const HomeScreen = (props: HomeScreenProps) => {
 export default HomeScreen
 
 const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+  },
   homeContainer: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: "#fff"
   },
   contentContainer: {
     height: '100%',
@@ -90,7 +114,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   carouselContainer: {
-    alignItems: 'center'
+    backgroundColor: COLORS.navbar_light,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   profile: {
    width: '100%',

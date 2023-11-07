@@ -12,9 +12,12 @@ export const FORM_TYPE_OBJECT = {
     }
 }
 
+// rename to indicate more into colors
 export const COMPONENT_TYPE: Record<ReusableComponentType, ReusableComponentValuesType> = {
-    [ReusableComponentType.Base]: [COLORS.tertiary_light, COLORS.tertiary_dark, COLORS.navbar_light],
-    [ReusableComponentType.Secondary]: [COLORS.navbar_light, COLORS.navbar, COLORS.tertiary]
+    [ReusableComponentType.Primary]: [COLORS.tertiary_light, COLORS.tertiary_dark, COLORS.navbar_light],
+    [ReusableComponentType.Secondary]: [COLORS.navbar_light, COLORS.navbar, COLORS.tertiary],
+    [ReusableComponentType.Tertiary]: [COLORS.listItem, COLORS.listItem_light, "#FFFFFF"]
+    // [ReusableComponentType.Tertiary]: [COLORS.card_light, COLORS.card, "#FFFFFF"]
 }
 
 export const COMPONENT_SIZE: Record<ReusableComponentSize, number> = {

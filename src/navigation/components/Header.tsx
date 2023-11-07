@@ -20,7 +20,7 @@ const Header = () => {
         <View style={styles.navigationContainer}>
             <View style={styles.innerWrapper}>
                 <View style={styles.titleContainer}>
-                    <Ionicons name='fast-food-sharp' size={32} color={COLORS.tertiary} />
+                    <Ionicons name='fast-food-sharp' size={32} color={COLORS.tertiary_dark} />
                     <Text style={styles.headerTitle}>Fooddicted!</Text>
                 </View>
                 <View style={styles.buttonContainer}>
@@ -36,7 +36,7 @@ export default Header;
 const styles = StyleSheet.create({
     navigationContainer: {
         flexDirection: 'row',
-        backgroundColor: "#fff",
+        backgroundColor: COLORS.navbar_light,
         height: 75,
         alignItems: 'flex-end',
     },
@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
     },
     headerTitle: {
         fontSize: 18,
-        color: COLORS.tertiary,
+        color: COLORS.tertiary_dark,
     },
 })

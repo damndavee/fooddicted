@@ -10,7 +10,7 @@ function* initialFetchData(): any {
     const storageRecipes = yield select(localStorageRecipesSelector);
 
     if(storageRecipes.length === 0) {
-        yield put(fetchRandomRecipesThunk({ numberToFetch: 10} ) as any);
+        yield put(fetchRandomRecipesThunk({ numberToFetch: 100} ) as any);
     }
 }
 

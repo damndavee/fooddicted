@@ -18,38 +18,44 @@ const NativeCarousel = (props: CarouselProps) => {
   const progressValue = useSharedValue<number>(0);
 
   const width = Dimensions.get('window').width;
+  const height = Dimensions.get('window').height;
 
   return (
     <GestureHandlerRootView style={{flex: 1}}>
        <Carousel
           style={{
-            width: width * 0.86,
+            width,
+            height: height * 0.6,
+            alignItems: "center",
+            justifyContent: "center",
           }}
-          width={width * 0.86}
-          height={width * 0.6}
+          width={width}
+          height={height * 0.6}
           pagingEnabled={true}
           snapEnabled={true}
-          mode="parallax"
           loop={true}
           autoPlay={false}
-          autoPlayReverse={true}
+          autoPlayReverse={false}
           onProgressChange={(_, absoluteProgress) =>
             (progressValue.value = absoluteProgress)
           }
-          maxScrollDistancePerSwipe={width}
           panGestureHandlerProps={{
             activeOffsetX: [-10, 10],
           }}
           data={props.data}
+          // customConfig={() => ({ type: "positive", viewCount: 5 })}
           onSnapToItem={index => setCurrentIndex(index)}
-          modeConfig={{
-            parallaxScrollingScale: 0.9,
-            parallaxScrollingOffset: 50,
-          }}
-          renderItem={({item}) => <CarouselItem item={item} currentIndex={currentIndex} variant="big" background={COLORS.navbar} />}
+          // modeConfig={{
+          //   snapDirection: 'right',
+          //   moveSize: 2000,
+          //   scaleInterval: 0.13,
+          //   showLength: 3.82,
+          //   stackInterval: 33,
+          // }}
+          renderItem={({item}) => <CarouselItem item={item} currentIndex={currentIndex} />}
           />
          {!!progressValue && (
-           <View style={{flexDirection: "row", justifyContent: "space-between", width: 100, alignSelf: "center"}}>
+           <View style={{ flexDirection: "row", justifyContent: "space-between", width: 100, alignSelf: "center", marginVertical: 10 }}>
               {props.data.map((item, index) => {
                 return (
                   <PaginationItem

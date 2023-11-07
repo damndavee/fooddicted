@@ -8,4 +8,8 @@ export const COLORS = {
     navbar: "#A3A6AB",
     navbar_light: "#F9F9F9",
     text: "#A3ACAB",
+    card: "#343434",
+    card_light: "#5F5440",
+    listItem: "#01404E",
+    listItem_light: "#34737B",
 }

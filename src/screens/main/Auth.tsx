@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { AuthScreenIcon } from '../../components/common/Icons'; 
 import { COLORS } from '../../utils/tokens';
-import FormControlInputComponent from '../../components/common/FormControlInput';
+import FormControlInputComponent from '../../components/form/FormControlInput';
 import useForm from '../../hooks/useForm';
 import { FormType } from '../../store/auth/auth.type';
 
