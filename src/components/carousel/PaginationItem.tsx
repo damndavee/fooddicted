@@ -34,15 +34,14 @@ const PaginationItem: React.FC<{
         ],
       };
     }, [animValue, index, length]);
+
     return (
       <View
         style={{
-          backgroundColor: "white",
+          backgroundColor: COLORS.navbar,
           width,
           height: width,
           borderRadius: 50,
-          borderColor: '#000',
-          borderWidth: 1,
           overflow: "hidden",
           transform: [
             {

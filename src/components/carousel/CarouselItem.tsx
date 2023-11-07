@@ -3,33 +3,49 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import { Ionicons } from "@expo/vector-icons"
 
 import IconButton from '../buttons/IconButton';
-import { Button } from 'native-base';
 import { COLORS } from '../../utils/tokens';
-import Hero from '../Hero/Hero';
 import { DetailedRecipeType } from '../../store/recipes/recipes.type';
 import StarRating from '../common/StarRating';
+import Button from '../buttons/Button';
+import Badge from '../common/Badge';
 
 type CarouselItemProps = {
-  variant: 'big' | 'medium' | 'small';
-  background: any;
   item: DetailedRecipeType;
   currentIndex: number;
 };
 
 const CarouselItem = (props: CarouselItemProps) => {
+
+  const truncatedTitle = props.item.title.length > 30 ? props.item.title.slice(0, 29) + "..." : props.item.title;
+  const ingredientsCount = props.item.extendedIngredients.length;
+
   return (
-    <View style={[styles.carouselItemContainer, {backgroundColor: props.background}]}>
+    <View style={styles.carouselItemContainer}>
       <View style={styles.imageContainer}>
-        <ImageBackground source={{ uri: props.item.image }} style={styles.image} resizeMode='cover'>
-          <View style={styles.bookmarkContainer}>
-            <IconButton name='bookmark-outline' onPress={() => {}} size={20} type='Base' isRounded showBackgroundColor />
+        <ImageBackground source={{ uri: props.item.image }} style={styles.image}>
+          <View style={styles.innerContainer}>
+            <View style={styles.bookmarkContainer}>
+              <IconButton onPress={() => {}} size={20} type='Tertiary' showBackgroundColor isRounded name='bookmark-outline' />
+            </View>
           </View>
         </ImageBackground>
       </View>
       <View style={styles.informationContainer}>
-        <StarRating rating={props.item.rating} />
-        <Text style={{color: 'white', fontSize: 16}}>{props.item.title}</Text>
-        <Button padding={1} borderColor="white" rounded={15} variant="outline" _text={{color: 'white'}} leftIcon={<Ionicons name='cart-outline' size={20} color="white" />}>10</Button>
+        <View style={styles.ratingContainer}>
+          <StarRating rating={props.item.rating} />
+          <Badge label={`${props.item.readyInMinutes} mins`} type='Tertiary' />
+          <Text style={{color: COLORS.tertiary, fontSize: 16}}>{props.item.servings} servings</Text>
+        </View>
+        <Text style={{color: COLORS.tertiary, fontWeight: 'bold', fontSize: 20}}>{props.item.title}</Text>
+        <Button 
+          fullWidth
+          label={`${ingredientsCount} ingredients`} 
+          onPress={() => {}} 
+          size='Big' 
+          type='Primary' 
+          variant='Outline' 
+          leftIcon='cart-outline' 
+        />
       </View>
     </View>
   )
@@ -40,27 +56,35 @@ export default CarouselItem;
 const styles = StyleSheet.create({
     carouselItemContainer: {
       flex: 1,
-      flexDirection: 'row',
+      flexDirection: 'column',
+      overflow: 'hidden',
     },
     imageContainer: {
-      height: '100%',
-      width: '70%',
-      backgroundColor: 'red',
-    },
-    informationContainer: {
-      flex: 1,
+      height: '60%',
       width: '100%',
-      padding: 10
     },
-    buttonContainer: {
-      marginHorizontal: 15
+    innerContainer: {
+      flex: 1,
     },
     bookmarkContainer: {
-      height: 50,
-      justifyContent: 'center',
-      paddingHorizontal: 10,
       width: '100%',
+      alignItems: 'flex-end',
+      justifyContent: 'center',
+      padding: 10,
+    },
+    informationContainer: {
+      padding: 10,
+      flex: 1,
+      flexDirection: 'column',
       alignItems: 'flex-start',
+      justifyContent: 'space-between',
+      width: '100%',
+    },
+    ratingContainer: {
+      width: '100%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between'
     },
     image: {
       flex : 1,

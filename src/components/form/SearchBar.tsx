@@ -46,7 +46,7 @@ const SearchBar = (props: SearchBarProps) => {
                         } />
                     )}
                     <Icon size={8} bgColor={COLORS.tertiary} rounded="none" as={
-                        <IconButton style={{marginRight: 7, padding: 7}} type="Base" name="search-sharp" size={20} showBackgroundColor onPress={props.onPressSearchButton} />
+                        <IconButton style={{marginRight: 7, padding: 7}} type="Primary" name="search-sharp" size={20} showBackgroundColor onPress={props.onPressSearchButton} />
                     } />
                 </>
              }        

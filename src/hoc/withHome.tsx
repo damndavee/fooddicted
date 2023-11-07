@@ -8,6 +8,7 @@ import { navigateAction } from "../store/navigation/navigation.action";
 import useSearchBar from "../hooks/useSearchBar";
 import { bestRatedRecipesSelector, carouselRecipesSelector, localStorageRecipesSelector, mostRecentRecipesSelector } from "../store/recipes/recipes.selector";
 import { DetailedRecipeType } from "../store/recipes/recipes.type";
+import { signOut } from "../store/auth/auth.reducer";
 
 
 export type HomeScreenProps = {
@@ -39,9 +40,10 @@ const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => 
         isClearButtonVisible, isSearchQueryValid, searchValue, searchHistoryItems } = useSearchBar();
 
     const handleGoToProfile = () => {
-        dispatch(navigateAction({
-            screen: NavigationScreens.Profile,
-        }))
+        dispatch(signOut());
+        // dispatch(navigateAction({
+        //     screen: NavigationScreens.Profile,
+        // }))
     };
 
     const handleGoToSearch = () => {

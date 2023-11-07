@@ -35,7 +35,7 @@ const StarRating = (props: StarRatingProps) => {
                 starShape = 'outline';
             }
 
-            return <Ionicons size={18} name={`star-${starShape}`} color="white" />;
+            return <Ionicons size={18} name={`star-${starShape}`} color="gold" />;
         });
     }
 
