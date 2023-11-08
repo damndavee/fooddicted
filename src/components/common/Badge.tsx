@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react';
-import { ReusableComponentType, ReusableComponentTypeStateIndex } from '../../types/reusableComponents';
-import { COMPONENT_TYPE } from '../../utils/consts';
+import { ReusableComponentType, ReusableComponentColorThemeIndex } from '../../types/reusableComponents';
+import { COMPONENT_COLOR_THEME } from '../../utils/consts';
 import { capitalizeTitle } from '../../utils/functions';
 
 export type BadgeProps = {
@@ -10,8 +10,8 @@ export type BadgeProps = {
 }
 
 const Badge = (props: BadgeProps) => {
-    const bgColor =  COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Active];
-    const textColor = COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Color];
+    const bgColor =  COMPONENT_COLOR_THEME[props.type][ReusableComponentColorThemeIndex.Active];
+    const textColor = COMPONENT_COLOR_THEME[props.type][ReusableComponentColorThemeIndex.Color];
   
     return (
         <View style={[styles.badgeContainer, { backgroundColor: bgColor }]}>

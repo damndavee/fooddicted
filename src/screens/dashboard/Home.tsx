@@ -25,7 +25,7 @@ const HomeScreen = (props: HomeScreenProps) => {
             <View style={styles.contentContainer}>
               <View style={styles.profileCTAContainer}>
                 <View style={styles.profile}>
-                    <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size={24} />
+                    <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size="Big" />
                 </View>
               </View>
               <View>

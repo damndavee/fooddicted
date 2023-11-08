@@ -2,8 +2,8 @@ import React from 'react';
 
 import { StyleSheet, Text, View } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient";
-import { ReusableComponentSize, ReusableComponentType, ReusableComponentTypeStateIndex } from '../../types/reusableComponents';
-import { COMPONENT_SIZE, COMPONENT_TYPE } from '../../utils/consts';
+import { ReusableComponentSize, ReusableComponentType, ReusableComponentColorThemeIndex, ReusableComponentSizeIndex } from '../../types/reusableComponents';
+import { COMPONENT_SIZE, COMPONENT_COLOR_THEME } from '../../utils/consts';
 import { COLORS } from '../../utils/tokens';
 
 export type SectionProps = {
@@ -14,11 +14,10 @@ export type SectionProps = {
 
 const Section = (props: SectionProps) => {
   return (
-    <LinearGradient locations={[0.4, 0.9]} start={{x: 0, y: 0.4}} end={{x: 1, y: 1}} colors={[COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Active], COLORS.secondaryLight]} style={styles.sectionContainer} >
-    {/* <View style={[styles.sectionContainer, {backgroundColor: COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Active]}]}> */}
+    <LinearGradient locations={[0.4, 0.9]} start={{x: 0, y: 0.4}} end={{x: 1, y: 1}} colors={[COMPONENT_COLOR_THEME[props.type][ReusableComponentColorThemeIndex.Active], COLORS.secondaryLight]} style={styles.sectionContainer} >
       <Text style={{ 
-        color: COMPONENT_TYPE[props.type][ReusableComponentTypeStateIndex.Color],
-        fontSize: COMPONENT_SIZE[props.size],
+        color: COMPONENT_COLOR_THEME[props.type][ReusableComponentColorThemeIndex.Color],
+        fontSize: COMPONENT_SIZE[props.size][ReusableComponentSizeIndex.FontSize],
         fontWeight: 'bold'
         }}>{props.label}</Text>
     </LinearGradient>

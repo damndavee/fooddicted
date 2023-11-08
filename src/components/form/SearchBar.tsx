@@ -42,11 +42,11 @@ const SearchBar = (props: SearchBarProps) => {
                 <>
                     {props.isClearButtonShown && (
                         <Icon size={8} bgColor={COLORS.primary} rounded="none" as={
-                            <IconButton style={{marginRight: 7, padding: 7}} type="Secondary" name="close-sharp" size={20} onPress={props.onClearQuery} />
+                            <IconButton style={{marginRight: 7, padding: 7}} type="Secondary" name="close-sharp" size="Big" onPress={props.onClearQuery} />
                         } />
                     )}
                     <Icon size={8} bgColor={COLORS.primary} rounded="none" as={
-                        <IconButton style={{marginRight: 7, padding: 7}} type="Primary" name="search-sharp" size={20} showBackgroundColor onPress={props.onPressSearchButton} />
+                        <IconButton style={{marginRight: 7, padding: 7}} type="Primary" name="search-sharp" size="Big" showBackgroundColor onPress={props.onPressSearchButton} />
                     } />
                 </>
              }        
