@@ -16,3 +16,18 @@ export const COLORS = {
     card: "#343434",
     card_light: "#5F5440",
 }
+
+export const SPACINGS = {
+    xsmall: 4,
+    small: 8,
+    medium: 12,
+    big: 16,
+    large: 20,
+}
+
+export const FONT_SIZES = {
+    small: 14,
+    medium: 16,
+    big: 20,
+    large: 24,
+}
