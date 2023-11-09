@@ -18,7 +18,6 @@ export const COMPONENT_COLOR_THEME: Record<ReusableComponentType, ReusableCompon
     [ReusableComponentType.Tertiary]: [COLORS.tertiaryLight, COLORS.tertiary, COLORS.secondaryLight]
 }
 
-// same approach as color theme fontSize, spacing, ...
 export const COMPONENT_SIZE: Record<ReusableComponentSize, ReusableComponentSizeValues> = {
     [ReusableComponentSize.Small]: [FONT_SIZES.small, SPACINGS.small],
     [ReusableComponentSize.Medium]: [FONT_SIZES.medium, SPACINGS.medium],

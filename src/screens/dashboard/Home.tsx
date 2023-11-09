@@ -12,9 +12,8 @@ import SearchBar from '../../components/form/SearchBar'
 
 import { COLORS } from '../../utils/tokens'
 import NativeCarousel from "../../components/carousel/Carousel";
-import Section from "../../components/common/Section";
 import Card from "../../components/common/Card";
-import ListItem from "../../components/common/ListItem";
+import List from "../../components/list/List";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
@@ -51,37 +50,51 @@ const HomeScreen = (props: HomeScreenProps) => {
             </View>
           </Hero>
 
-          <Section type="Tertiary" label="Daily inspirations" size="Big" />
-          <View style={styles.carouselContainer}>
-            <NativeCarousel data={props.carouselData} />
-          </View>
-
-          <ListItem sectionTitle="Most Recent">
+          <List 
+            type="Tertiary" 
+            sectionTitle="Most Recent" 
+            onShowAll={() => {}} 
+            showAllButton 
+            spacing="Small" 
+          >
+            <View style={styles.carouselContainer}>
+              <NativeCarousel data={props.carouselData} />
+            </View>
+          </List>
+          
+          {/* <List sectionTitle="Most Recent" onShowAll={() => {}} showAllButton spacing="Small" >
             <FlatList data={props.mostRecentRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </ListItem>
-          <View style={{height: 250, width: '100%'}}>
+          </List> */}
+
+          {/* <View style={{height: 250, width: '100%'}}>
             <Text>ARTICLE</Text>
-          </View>
-          <ListItem sectionTitle="Popular creators">
+          </View> */}
+
+          {/* <List sectionTitle="Popular creators">
             
-          </ListItem>
-          <Section type="Tertiary" label="Best Rating" size="Big" />
+          </List> */}
+
+          {/* <Section type="Tertiary" label="Best Rating" size="Big" />
           <View>
             <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </View>
-          <View style={{height: 250, width: '100%'}}>
+          </View> */}
+
+          {/* <View style={{height: 250, width: '100%'}}>
             <Text>ARTICLE</Text>
-          </View>
-          <ListItem sectionTitle="Top categories">
+          </View> */}
+
+          {/* <List sectionTitle="Top categories">
             
-          </ListItem>
-          <Section type="Tertiary" label="Recently Viewed" size="Big" />
+          </List> */}
+
+          {/* <Section type="Tertiary" label="Recently Viewed" size="Big" />
           <View>
             <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </View>
-          <View style={{height: 250, width: '100%'}}>
+          </View> */}
+
+          {/* <View style={{height: 250, width: '100%'}}>
             <Text>ALL RECIPES</Text>
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </TouchableWithoutFeedback>
