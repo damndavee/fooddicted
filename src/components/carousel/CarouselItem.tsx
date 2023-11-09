@@ -14,7 +14,6 @@ type CarouselItemProps = {
 };
 
 const CarouselItem = (props: CarouselItemProps) => {
-  // const truncatedTitle = props.item.title.length > 30 ? props.item.title.slice(0, 29) + "..." : props.item.title;
   const ingredientsCount = props.item.extendedIngredients.length;
 
   return (

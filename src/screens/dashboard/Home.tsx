@@ -52,9 +52,7 @@ const HomeScreen = (props: HomeScreenProps) => {
 
           <List 
             type="Tertiary" 
-            sectionTitle="Most Recent" 
-            onShowAll={() => {}} 
-            showAllButton 
+            sectionTitle="Daily inspirations" 
             spacing="Small" 
           >
             <View style={styles.carouselContainer}>
@@ -62,9 +60,15 @@ const HomeScreen = (props: HomeScreenProps) => {
             </View>
           </List>
           
-          {/* <List sectionTitle="Most Recent" onShowAll={() => {}} showAllButton spacing="Small" >
-            <FlatList data={props.mostRecentRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </List> */}
+          <List 
+            sectionTitle="Most Recent" 
+            onShowAll={() => {}} 
+            showAllButton 
+            spacing="Small" 
+            type="Tertiary"
+          >
+            <FlatList data={props.mostRecentRecipes} horizontal renderItem={({ item }) => <Card item={item} type="Tertiary" />} />
+          </List>
 
           {/* <View style={{height: 250, width: '100%'}}>
             <Text>ARTICLE</Text>
@@ -74,10 +78,15 @@ const HomeScreen = (props: HomeScreenProps) => {
             
           </List> */}
 
-          {/* <Section type="Tertiary" label="Best Rating" size="Big" />
-          <View>
-            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </View> */}
+          <List 
+            sectionTitle="Best Rating" 
+            onShowAll={() => {}} 
+            showAllButton 
+            spacing="Small" 
+            type="Tertiary"
+          >
+            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} type="Tertiary" />} />
+          </List>
 
           {/* <View style={{height: 250, width: '100%'}}>
             <Text>ARTICLE</Text>
@@ -87,10 +96,15 @@ const HomeScreen = (props: HomeScreenProps) => {
             
           </List> */}
 
-          {/* <Section type="Tertiary" label="Recently Viewed" size="Big" />
-          <View>
-            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </View> */}
+          <List 
+            sectionTitle="Recently Viewed" 
+            onShowAll={() => {}} 
+            showAllButton 
+            spacing="Small" 
+            type="Tertiary"
+          >
+            <Text>HERE WILL BE RECENTLY VIEWD RECIPES</Text>
+          </List>
 
           {/* <View style={{height: 250, width: '100%'}}>
             <Text>ALL RECIPES</Text>
