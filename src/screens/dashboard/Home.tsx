@@ -14,6 +14,7 @@ import { COLORS } from '../../utils/tokens'
 import NativeCarousel from "../../components/wrappers/containers/Carousel";
 import Card from "../../components/wrappers/items/Card";
 import List from "../../components/wrappers/containers/List";
+import Banner from "../../components/common/Banner";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
@@ -106,11 +107,9 @@ const HomeScreen = (props: HomeScreenProps) => {
             <Text>HERE WILL BE RECENTLY VIEWD RECIPES</Text>
           </List>
 
-          {/* <View style={{height: 250, width: '100%'}}>
-            <Text>ALL RECIPES</Text>
-          </View> */}
+          <Banner title="All Recipes" subtitle="Get to know the recipes that will satisfy every palate, tested by the greatest culinary specialists." buttonTitle="See Recipes" buttonAction={() => {}} />
         </View>
-      </ScrollView>
+       </ScrollView>
     </TouchableWithoutFeedback>
   )
 }
