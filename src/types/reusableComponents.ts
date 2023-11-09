@@ -22,13 +22,20 @@ export enum ReusableComponentType {
 export enum ReusableComponentSize {
     Small = 'Small', 
     Medium = 'Medium',
-    Big = 'Big'
+    Big = 'Big',
+    Large = 'Large'
 }
 
-export enum ReusableComponentTypeStateIndex {
+export enum ReusableComponentColorThemeIndex {
     Active = 0,
     Pressed = 1,
     Color = 2,
 }
 
-export type ReusableComponentValuesType = [string, string, string];
+export enum ReusableComponentSizeIndex {
+    FontSize = 0,
+    Spacing = 1,
+}
+
+export type ReusableComponentColorThemeValues = [string, string, string];
+export type ReusableComponentSizeValues = [number, number];

@@ -1,13 +1,12 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
-import { Ionicons } from "@expo/vector-icons"
 
-import IconButton from '../buttons/IconButton';
-import { COLORS } from '../../utils/tokens';
-import { DetailedRecipeType } from '../../store/recipes/recipes.type';
-import StarRating from '../common/StarRating';
-import Button from '../buttons/Button';
-import Badge from '../common/Badge';
+import IconButton from '../../buttons/IconButton';
+import { COLORS } from '../../../utils/tokens';
+import { DetailedRecipeType } from '../../../store/recipes/recipes.type';
+import StarRating from '../../common/StarRating';
+import Button from '../../buttons/Button';
+import Badge from '../../common/Badge';
 
 type CarouselItemProps = {
   item: DetailedRecipeType;
@@ -15,8 +14,6 @@ type CarouselItemProps = {
 };
 
 const CarouselItem = (props: CarouselItemProps) => {
-
-  const truncatedTitle = props.item.title.length > 30 ? props.item.title.slice(0, 29) + "..." : props.item.title;
   const ingredientsCount = props.item.extendedIngredients.length;
 
   return (
@@ -25,7 +22,7 @@ const CarouselItem = (props: CarouselItemProps) => {
         <ImageBackground source={{ uri: props.item.image }} style={styles.image}>
           <View style={styles.innerContainer}>
             <View style={styles.bookmarkContainer}>
-              <IconButton onPress={() => {}} size={20} type='Tertiary' showBackgroundColor isRounded name='bookmark-outline' />
+              <IconButton onPress={() => {}} size="Large" type='Tertiary' showBackgroundColor isRounded name='bookmark-outline' />
             </View>
           </View>
         </ImageBackground>
@@ -39,11 +36,11 @@ const CarouselItem = (props: CarouselItemProps) => {
         <Text style={{color: COLORS.primary, fontWeight: 'bold', fontSize: 20}}>{props.item.title}</Text>
         <Button 
           fullWidth
-          label={`${ingredientsCount} ingredients`} 
-          onPress={() => {}} 
-          size='Big' 
+          label={`Add ${ingredientsCount} ingredients`} 
+          onPress={() => {}}
+          size='Medium' 
           type='Primary' 
-          variant='Outline' 
+          variant='Filled' 
           leftIcon='cart-outline' 
         />
       </View>

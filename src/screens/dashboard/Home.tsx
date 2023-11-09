@@ -11,10 +11,10 @@ import IconButton from '../../components/buttons/IconButton'
 import SearchBar from '../../components/form/SearchBar'
 
 import { COLORS } from '../../utils/tokens'
-import NativeCarousel from "../../components/carousel/Carousel";
-import Section from "../../components/common/Section";
-import Card from "../../components/common/Card";
-import ListItem from "../../components/common/ListItem";
+import NativeCarousel from "../../components/wrappers/containers/Carousel";
+import Card from "../../components/wrappers/items/Card";
+import List from "../../components/wrappers/containers/List";
+import Banner from "../../components/common/Banner";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (
@@ -25,7 +25,7 @@ const HomeScreen = (props: HomeScreenProps) => {
             <View style={styles.contentContainer}>
               <View style={styles.profileCTAContainer}>
                 <View style={styles.profile}>
-                    <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size={24} />
+                    <IconButton showBackgroundColor type='Secondary' isRounded onPress={props.onGoToProfile} name='people-outline' size="Big" />
                 </View>
               </View>
               <View>
@@ -51,39 +51,65 @@ const HomeScreen = (props: HomeScreenProps) => {
             </View>
           </Hero>
 
-          <Section type="Tertiary" label="Daily inspirations" size="Big" />
-          <View style={styles.carouselContainer}>
-            <NativeCarousel data={props.carouselData} />
-          </View>
+          <List 
+            type="Tertiary" 
+            sectionTitle="Daily inspirations" 
+            spacing="Small" 
+          >
+            <View style={styles.carouselContainer}>
+              <NativeCarousel data={props.carouselData} />
+            </View>
+          </List>
+          
+          <List 
+            sectionTitle="Most Recent" 
+            onShowAll={() => {}} 
+            showAllButton 
+            spacing="Small" 
+            type="Tertiary"
+          >
+            <FlatList data={props.mostRecentRecipes} horizontal renderItem={({ item }) => <Card item={item} type="Tertiary" />} />
+          </List>
 
-          <ListItem sectionTitle="Most Recent">
-            <FlatList data={props.mostRecentRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </ListItem>
-          <View style={{height: 250, width: '100%'}}>
+          {/* <View style={{height: 250, width: '100%'}}>
             <Text>ARTICLE</Text>
-          </View>
-          <ListItem sectionTitle="Popular creators">
+          </View> */}
+
+          {/* <List sectionTitle="Popular creators">
             
-          </ListItem>
-          <Section type="Tertiary" label="Best Rating" size="Big" />
-          <View>
-            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </View>
-          <View style={{height: 250, width: '100%'}}>
+          </List> */}
+
+          <List 
+            sectionTitle="Best Rating" 
+            onShowAll={() => {}} 
+            showAllButton 
+            spacing="Small" 
+            type="Tertiary"
+          >
+            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} type="Tertiary" />} />
+          </List>
+
+          {/* <View style={{height: 250, width: '100%'}}>
             <Text>ARTICLE</Text>
-          </View>
-          <ListItem sectionTitle="Top categories">
+          </View> */}
+
+          {/* <List sectionTitle="Top categories">
             
-          </ListItem>
-          <Section type="Tertiary" label="Recently Viewed" size="Big" />
-          <View>
-            <FlatList data={props.bestRatedRecipes} horizontal renderItem={({ item }) => <Card item={item} />} />
-          </View>
-          <View style={{height: 250, width: '100%'}}>
-            <Text>ALL RECIPES</Text>
-          </View>
+          </List> */}
+
+          <List 
+            sectionTitle="Recently Viewed" 
+            onShowAll={() => {}} 
+            showAllButton 
+            spacing="Small" 
+            type="Tertiary"
+          >
+            <Text>HERE WILL BE RECENTLY VIEWD RECIPES</Text>
+          </List>
+
+          <Banner title="All Recipes" subtitle="Get to know the recipes that will satisfy every palate, tested by the greatest culinary specialists." buttonTitle="See Recipes" buttonAction={() => {}} />
         </View>
-      </ScrollView>
+       </ScrollView>
     </TouchableWithoutFeedback>
   )
 }

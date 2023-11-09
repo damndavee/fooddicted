@@ -24,7 +24,7 @@ const Header = () => {
                     <Text style={styles.headerTitle}>Fooddicted!</Text>
                 </View>
                 <View style={styles.buttonContainer}>
-                    <IconButton showBackgroundColor={true} isRounded name='add-sharp' onPress={handleGoToAddRecipeScreen} size={24} type='Secondary' style={{ marginRight: 15 }} />
+                    <IconButton showBackgroundColor={true} isRounded name='add-sharp' onPress={handleGoToAddRecipeScreen} size="Large" type='Secondary' style={{ marginRight: 15 }} />
                 </View>
             </View>
         </View>
