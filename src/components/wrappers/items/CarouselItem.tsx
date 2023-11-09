@@ -1,12 +1,12 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 
-import IconButton from '../buttons/IconButton';
-import { COLORS } from '../../utils/tokens';
-import { DetailedRecipeType } from '../../store/recipes/recipes.type';
-import StarRating from '../common/StarRating';
-import Button from '../buttons/Button';
-import Badge from '../common/Badge';
+import IconButton from '../../buttons/IconButton';
+import { COLORS } from '../../../utils/tokens';
+import { DetailedRecipeType } from '../../../store/recipes/recipes.type';
+import StarRating from '../../common/StarRating';
+import Button from '../../buttons/Button';
+import Badge from '../../common/Badge';
 
 type CarouselItemProps = {
   item: DetailedRecipeType;

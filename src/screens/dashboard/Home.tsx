@@ -11,9 +11,9 @@ import IconButton from '../../components/buttons/IconButton'
 import SearchBar from '../../components/form/SearchBar'
 
 import { COLORS } from '../../utils/tokens'
-import NativeCarousel from "../../components/carousel/Carousel";
-import Card from "../../components/common/Card";
-import List from "../../components/list/List";
+import NativeCarousel from "../../components/wrappers/containers/Carousel";
+import Card from "../../components/wrappers/items/Card";
+import List from "../../components/wrappers/containers/List";
 
 const HomeScreen = (props: HomeScreenProps) => {
   return (

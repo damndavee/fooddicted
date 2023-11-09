@@ -1,13 +1,12 @@
 import * as React from "react";
-import { View, Text, Dimensions } from "react-native";
+import { View, Dimensions } from "react-native";
 
 import Carousel from "react-native-reanimated-carousel";
-import CarouselItem from "./CarouselItem";
-import PaginationItem from "./PaginationItem";
+import CarouselItem from "../items/CarouselItem";
+import PaginationItem from "../items/PaginationItem";
 import { useSharedValue } from "react-native-reanimated";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { DetailedRecipeType } from "../../store/recipes/recipes.type";
-import { COLORS } from "../../utils/tokens";
+import { DetailedRecipeType } from "../../../store/recipes/recipes.type";
 
 type CarouselProps = {
   data: DetailedRecipeType[];

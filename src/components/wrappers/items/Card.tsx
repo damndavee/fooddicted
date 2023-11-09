@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, ImageBackground } from 'react-native';
-import { DetailedRecipeType } from '../../store/recipes/recipes.type';
-import Overlay from './Overlay';
-import { COLORS, SPACINGS } from '../../utils/tokens';
-import IconButton from '../buttons/IconButton';
-import Badge from './Badge';
-import StarRating from './StarRating';
-import Button from '../buttons/Button';
-import { ReusableComponentColorThemeIndex, ReusableComponentType } from '../../types/reusableComponents';
-import { COMPONENT_COLOR_THEME } from '../../utils/consts';
+
+import { DetailedRecipeType } from '../../../store/recipes/recipes.type';
+import Overlay from '../../common/Overlay';
+import IconButton from '../../buttons/IconButton';
+import Badge from '../../common/Badge';
+import StarRating from '../../common/StarRating';
+import Button from '../../buttons/Button';
+import { ReusableComponentColorThemeIndex, ReusableComponentType } from '../../../types/reusableComponents';
+import { COLORS, SPACINGS } from '../../../utils/tokens';
+import { COMPONENT_COLOR_THEME } from '../../../utils/consts';
 
 export type CardProps = {
   item: DetailedRecipeType;
@@ -19,7 +20,6 @@ const Card = (props: CardProps) => {
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
 
-  const truncatedTitle = props.item.title.length > 30 ? props.item.title.slice(0, 29) + "..." : props.item.title;
   const ingredientsCount = props.item.extendedIngredients.length;
 
   return (
@@ -36,7 +36,7 @@ const Card = (props: CardProps) => {
       <View style={styles.infoContainer}>
         <View>
           <StarRating rating={props.item.rating} />
-          <Text style={styles.title}>{truncatedTitle}</Text>
+          <Text style={styles.title}>{props.item.title}</Text>
         </View>
         <Button 
           fullWidth
@@ -44,7 +44,7 @@ const Card = (props: CardProps) => {
           onPress={() => {}}
           size='Small' 
           type='Secondary' 
-          variant='Filled' 
+          variant='Filled'
         />
       </View>
     </View>
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     },
     infoContainer: {
       flex: 1,
-      padding: SPACINGS.small,
+      padding: SPACINGS.medium,
       justifyContent: 'space-between'
     },
     image: {

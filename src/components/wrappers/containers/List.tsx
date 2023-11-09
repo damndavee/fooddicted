@@ -1,10 +1,10 @@
 import React, { PropsWithChildren } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import Button from '../buttons/Button';
-import { FONT_SIZES, SPACINGS } from '../../utils/tokens';
-import { ReusableComponentColorThemeIndex, ReusableComponentSize, ReusableComponentSizeIndex, ReusableComponentType } from '../../types/reusableComponents';
-import { COMPONENT_COLOR_THEME, COMPONENT_SIZE } from '../../utils/consts';
+import Button from '../../buttons/Button';
+import { FONT_SIZES, SPACINGS } from '../../../utils/tokens';
+import { ReusableComponentColorThemeIndex, ReusableComponentSize, ReusableComponentSizeIndex, ReusableComponentType } from '../../../types/reusableComponents';
+import { COMPONENT_COLOR_THEME, COMPONENT_SIZE } from '../../../utils/consts';
 
 type GenericListProps = {
     type: keyof typeof ReusableComponentType;

@@ -1,6 +1,6 @@
 import { View } from "native-base";
 import Animated, { Extrapolate, interpolate, useAnimatedStyle } from "react-native-reanimated";
-import { COLORS } from "../../utils/tokens";
+import { COLORS } from "../../../utils/tokens";
 
 const PaginationItem: React.FC<{
     index: number
