@@ -48,7 +48,9 @@ const Button = (props: ButtonProps) => {
         width: getButtonStyles(pressed)['width'],
       },
       styles.buttonContainer,
-    ]}>
+    ]}
+    onPress={() => props.onPress()}
+    >
       {({ pressed }) => (
         <>
         {props.leftIcon && (

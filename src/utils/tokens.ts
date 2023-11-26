@@ -23,6 +23,7 @@ export const SPACINGS = {
     medium: 12,
     big: 16,
     large: 20,
+    xlarge: 24,
 }
 
 export const FONT_SIZES = {
