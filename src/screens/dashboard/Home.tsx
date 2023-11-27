@@ -6,7 +6,7 @@ import {FlatList, View} from "native-base";
 
 import { HomeScreenProps } from '../../hoc/withHome'
 
-import Hero from '../../components/hero/Hero'
+import Hero from '../../components/Hero/Hero'
 import IconButton from '../../components/buttons/IconButton'
 import SearchBar from '../../components/form/SearchBar'
 

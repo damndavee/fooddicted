@@ -17,6 +17,9 @@ export enum ReusableComponentType {
     Primary = "Primary",
     Secondary = 'Secondary',
     Tertiary = 'Tertiary',
+    PrimaryLight = "PrimaryLight",
+    SecondaryLight = 'SecondaryLight',
+    TertiaryLight = 'TertiaryLight',
 }
 
 export enum ReusableComponentSize {
