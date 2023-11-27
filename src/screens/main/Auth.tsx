@@ -1,6 +1,5 @@
-import { KeyboardAvoidingView, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, View, ScrollView, ImageBackground } from 'react-native';
 import { AuthScreenProps } from '../../hoc/withMain';
-import { Button } from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { AuthScreenIcon } from '../../components/common/Icons'; 
@@ -8,6 +7,8 @@ import { COLORS } from '../../utils/tokens';
 import FormControlInputComponent from '../../components/form/FormControlInput';
 import useForm from '../../hooks/useForm';
 import { FormType } from '../../store/auth/auth.type';
+import Button from '../../components/buttons/Button';
+import IconButton from '../../components/buttons/IconButton';
 
 const AuthScreen = (props: AuthScreenProps) => {
   const { currentRoute, texts } = props;
@@ -16,7 +17,8 @@ const AuthScreen = (props: AuthScreenProps) => {
 
   return (
     <KeyboardAvoidingView behavior='height' style={styles.rootContainer} >
-      <LinearGradient locations={[0.1, 0.1]} start={{x: 0, y: 0.8}} end={{x: 0.2, y: 1}} colors={[COLORS.primaryLight, COLORS.secondaryLight]} style={styles.innerContainer}>
+      {/* <LinearGradient locations={[0.1, 0.1]} start={{x: 0, y: 0.8}} end={{x: 0.2, y: 1}} colors={[COLORS.primaryLight, COLORS.secondaryLight]} style={styles.innerContainer}> */}
+        <ImageBackground source={currentRoute === 'signin' ? require('../../../assets/signinScreen.jpg') : require('../../../assets/signupScreen.jpg')} resizeMode='cover' style={styles.imgBackground}>
         <View style={styles.formContainer}>
           <View style={styles.form}>
             {currentRoute === 'signup' && (
@@ -53,8 +55,8 @@ const AuthScreen = (props: AuthScreenProps) => {
             />
             {currentRoute === 'signup' && (
               <FormControlInputComponent 
-                id='confirmPassword'
-                errorMessage={getFieldValidation("confirmPassword")?.errors[0]}
+              id='confirmPassword'
+              errorMessage={getFieldValidation("confirmPassword")?.errors[0]}
                 isValid={getFieldValidation("confirmPassword")?.isValid} 
                 onChange={handleChange}
                 placeholder='Confirm password...'
@@ -63,15 +65,24 @@ const AuthScreen = (props: AuthScreenProps) => {
                 icon='lock-closed-outline'
               />
             )}
-            <Button android_ripple={{color: COLORS.primary}} onPress={handleSubmit} _text={{color: 'lightText'}} paddingTop={3} paddingBottom={3} style={styles.button} variant="outline">{texts.btnText}</Button>
+            {/* <Button android_ripple={{color: COLORS.primary}} onPress={handleSubmit} _text={{color: 'lightText'}} paddingTop={3} paddingBottom={3} style={styles.button} variant="outline">{texts.btnText}</Button> */}
           </View>
-          <Button _text={{color: 'lightText'}} variant="link">{texts.link}</Button>
+          <View style={{ padding: 16, gap: 16 }}>
+            <Button fullWidth label='Log in' onPress={() => {}} size='Medium' type='Primary' variant='Filled' />
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-evenly' }}>
+              <IconButton name='ios-logo-github' onPress={() => {}} size='Large' type='Primary' isRounded showBackgroundColor/>
+              <IconButton name='ios-logo-facebook' onPress={() => {}} size='Large' type='Primary' isRounded showBackgroundColor/>
+              <IconButton name='ios-logo-google' onPress={() => {}} size='Large' type='Primary' isRounded showBackgroundColor/>
+            </View>
+          </View>
+          {/* <Button _text={{color: 'lightText'}} variant="link">{texts.link}</Button> */}
         </View>
         
-        <View style={styles.iconContainer}>
+        {/* <View style={styles.iconContainer}>
           <AuthScreenIcon style={styles.icon} />
-        </View>
-      </LinearGradient>
+        </View> */}
+      </ImageBackground>
+      {/* </LinearGradient> */}
     </KeyboardAvoidingView>
   )
 }
@@ -80,6 +91,10 @@ export default AuthScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {
+    flex: 1,
+  },
+  imgBackground: {
+    width: '100%',
     flex: 1,
   },
   innerContainer: {
@@ -94,13 +109,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   formContainer: {
+    width: '100%',
     flex: 1,
-    width: '100%'
+    justifyContent: 'flex-end',
   },
   form: {
     width: '90%',
     alignSelf: 'center',
-    backgroundColor: "#fff",
   },
   icon: {
     width: 200,

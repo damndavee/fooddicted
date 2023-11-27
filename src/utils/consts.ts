@@ -3,19 +3,22 @@ import { COLORS, FONT_SIZES, SPACINGS } from "./tokens"
 
 export const FORM_TYPE_OBJECT = {
     "signin": {
-        link: "Don't have account? Sign up for free!",
+        welcome: "Welcome back!",
         btnText: "Sign in"
     },
     "signup": {
-        link: "Already have account? Sign in!",
-        btnText: "Create new user"
+        welcome: "Create Account",
+        btnText: "Create new user",
     }
 }
 
 export const COMPONENT_COLOR_THEME: Record<ReusableComponentType, ReusableComponentColorThemeValues> = {
-    [ReusableComponentType.Primary]: [COLORS.primaryLight, COLORS.primaryDark, COLORS.secondaryLight],
-    [ReusableComponentType.Secondary]: [COLORS.secondaryLight, COLORS.secondary, COLORS.primary],
-    [ReusableComponentType.Tertiary]: [COLORS.tertiaryLight, COLORS.tertiary, COLORS.secondaryLight]
+    [ReusableComponentType.PrimaryLight]: [COLORS.primaryLight, COLORS.primaryDark, COLORS.secondaryLight],
+    [ReusableComponentType.SecondaryLight]: [COLORS.secondaryLight, COLORS.secondary, COLORS.primary],
+    [ReusableComponentType.TertiaryLight]: [COLORS.tertiaryLight, COLORS.tertiary, COLORS.secondaryLight],
+    [ReusableComponentType.Primary]: [COLORS.primary, COLORS.primaryLight, COLORS.secondaryLight],
+    [ReusableComponentType.Secondary]: [COLORS.secondary, COLORS.secondaryLight, COLORS.primary],
+    [ReusableComponentType.Tertiary]: [COLORS.tertiary, COLORS.tertiaryLight, COLORS.secondaryLight] 
 }
 
 export const COMPONENT_SIZE: Record<ReusableComponentSize, ReusableComponentSizeValues> = {

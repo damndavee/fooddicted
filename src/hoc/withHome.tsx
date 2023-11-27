@@ -41,9 +41,6 @@ const withHomeScreen = (DumbComponent: ComponentType<HomeScreenProps>) => () => 
 
     const handleGoToProfile = () => {
         dispatch(signOut());
-        // dispatch(navigateAction({
-        //     screen: NavigationScreens.Profile,
-        // }))
     };
 
     const handleGoToSearch = () => {
